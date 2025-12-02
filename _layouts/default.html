@@ -1,39 +1,239 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{% if page.title %}{{ page.title }} - {% endif %}z-blog</title>
-    <link rel="stylesheet" href="{{ '/assets/css/home.css' | relative_url }}">
-</head>
-<body>
+    <link rel="stylesheet" href="{{ '/assets/css/home.css' | relative_url }}" />
+    <style>
+      /* 搜索按钮样式 */
+      .search-btn {
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 8px;
+        border-radius: 50%;
+        color: #666;
+        transition: all 0.2s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 0; /* 与导航链接的间距 */
+      }
+
+      .search-btn:hover {
+        background-color: rgba(0, 0, 0, 0.05);
+        color: #3498db; /* 悬停时变为主题色 */
+        transform: scale(1.1);
+      }
+      
+      .site-nav {
+        display: flex;
+        align-items: center;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 搜索浮窗 -->
+    <div id="search-overlay" class="search-overlay">
+      <div class="search-overlay-bg"></div>
+      <div class="search-wrapper-centered">
+        <button class="close-search-btn" aria-label="Close search">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+        <div id="global-search-box" class="search-box-container"></div>
+        <div id="global-hits-container" class="search-hits-container"></div>
+      </div>
+    </div>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.css@7.4.5/themes/satellite-min.css" />
+    
+    <style>
+      /* 搜索浮窗样式 */
+      .search-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 9999;
+        display: none; /* 默认隐藏 */
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .search-overlay.active {
+        display: flex;
+        opacity: 1;
+      }
+
+      .search-overlay-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(5px);
+      }
+
+      .search-wrapper-centered {
+        position: relative;
+        width: 100%;
+        max-width: 700px;
+        margin: 100px auto 0;
+        padding: 0 20px;
+        z-index: 10000;
+        transform: translateY(-20px);
+        transition: transform 0.3s ease;
+      }
+
+      .search-overlay.active .search-wrapper-centered {
+        transform: translateY(0);
+      }
+
+      .close-search-btn {
+        position: absolute;
+        top: -40px;
+        right: 20px;
+        background: none;
+        border: none;
+        color: white;
+        cursor: pointer;
+        padding: 5px;
+        opacity: 0.8;
+        transition: opacity 0.2s;
+      }
+
+      .close-search-btn:hover {
+        opacity: 1;
+      }
+
+      /* 搜索框样式重写 */
+      .search-box-container .ais-SearchBox-form {
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        height: 60px;
+      }
+
+      .search-box-container .ais-SearchBox-input {
+        border: none;
+        font-size: 18px;
+        padding-left: 50px;
+        border-radius: 8px;
+      }
+
+      .search-box-container .ais-SearchBox-submit {
+        left: 15px;
+        width: 20px;
+      }
+
+      .search-box-container .ais-SearchBox-reset {
+        right: 15px;
+      }
+
+      /* 结果列表样式 */
+      .search-hits-container {
+        margin-top: 20px;
+        background: white;
+        border-radius: 8px;
+        max-height: calc(100vh - 200px);
+        overflow-y: auto;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        display: none; /* 有结果时显示 */
+      }
+
+      .global-search-item {
+        padding: 20px;
+        border-bottom: 1px solid #eee;
+        transition: background 0.2s;
+        display: block;
+        text-decoration: none;
+      }
+
+      .global-search-item:hover {
+        background: #f8f9fa;
+      }
+
+      .global-search-item:last-child {
+        border-bottom: none;
+      }
+
+      .hit-title {
+        font-size: 18px;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 8px;
+        display: block;
+      }
+
+      .hit-title mark {
+        background: rgba(52, 152, 219, 0.2);
+        color: #2980b9;
+        padding: 0 2px;
+        border-radius: 2px;
+      }
+
+      .hit-content {
+        font-size: 14px;
+        color: #666;
+        line-height: 1.6;
+        margin: 0;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+
+      .hit-meta {
+        font-size: 12px;
+        color: #999;
+        margin-top: 10px;
+        display: block;
+      }
+
+      .no-results {
+        padding: 30px;
+        text-align: center;
+        color: #666;
+        font-size: 16px;
+      }
+    </style>
 
     <!-- Header -->
     <header class="site-header">
-        <div class="wrapper header-inner">
-            <a href="{{ '/' | relative_url }}" class="site-title">
-                <span class="logo-circle">zyc</span>
-                z-blog
-            </a>
-            <nav class="site-nav">
-                {% for item in site.data.navigation %}
-                    {% if item.sublinks %}
-                        <!-- Dropdown menu for categories -->
-                        <div class="nav-dropdown">
-                            <button type="button" class="nav-dropdown-toggle">{{ item.name }}</button>
-                            <div class="nav-dropdown-menu">
-                                {% for sublink in item.sublinks %}
-                                <a href="{{ sublink.url | relative_url }}">{{ sublink.name }}</a>
-                                {% endfor %}
-                            </div>
-                        </div>
-                    {% else %}
-                        <!-- Regular navigation link -->
-                        <a href="{{ item.url | relative_url }}">{{ item.name }}</a>
-                    {% endif %}
-                {% endfor %}
-            </nav>
-        </div>
+      <div class="wrapper header-inner">
+        <a href="{{ '/' | relative_url }}" class="site-title">
+          <span class="logo-circle">zyc</span>
+          z-blog
+        </a>
+        <nav class="site-nav">
+          <!-- 搜索按钮 -->
+          <button type="button" class="search-btn" aria-label="Search">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </button>
+          {% for item in site.data.navigation %} {% if item.sublinks %}
+          <!-- Dropdown menu for categories -->
+          <div class="nav-dropdown">
+            <button type="button" class="nav-dropdown-toggle">
+              {{ item.name }}
+            </button>
+            <div class="nav-dropdown-menu">
+              {% for sublink in item.sublinks %}
+              <a href="{{ sublink.url | relative_url }}">{{ sublink.name }}</a>
+              {% endfor %}
+            </div>
+          </div>
+          {% else %}
+          <!-- Regular navigation link -->
+          <a href="{{ item.url | relative_url }}">{{ item.name }}</a>
+          {% endif %} {% endfor %}
+        </nav>
+      </div>
     </header>
 
     <!-- Main Content Area -->
@@ -41,63 +241,173 @@
 
     <!-- Footer -->
     <footer class="site-footer">
-        <div class="wrapper">
-            <div class="footer-grid">
-                <!-- About Section -->
-                <div class="footer-col">
-                    <h5>{{ site.data.footer.about.title }}</h5>
-                    <p>{{ site.data.footer.about.description }}</p>
-                </div>
-                
-                <!-- Useful Links Section -->
-                <div class="footer-col">
-                    <h5>{{ site.data.footer.useful_links.title }}</h5>
-                    <ul>
-                        {% for link in site.data.footer.useful_links.links %}
-                        <li><a href="{{ link.url | relative_url }}">{{ link.name }}</a></li>
-                        {% endfor %}
-                    </ul>
-                </div>
-                
-                <!-- Quick Links Section -->
-                <div class="footer-col">
-                    <h5>{{ site.data.footer.quick_links.title }}</h5>
-                    <ul>
-                        {% for link in site.data.footer.quick_links.links %}
-                        <li><a href="{{ link.url | relative_url }}">{{ link.name }}</a></li>
-                        {% endfor %}
-                    </ul>
-                </div>
-                
-                <!-- Follow Us Section -->
-                <div class="footer-col">
-                    <h5>{{ site.data.footer.follow_us.title }}</h5>
-                    <div class="social-links">
-                        {% for social in site.data.footer.follow_us.socials %}
-                        <a href="{{ social.url }}" class="social-icon" title="{{ social.name }}">
-                            {% if social.icon == 'icon-github' %}
-                                <span style="font-size: 14px;">🐱</span>
-                            {% elsif social.icon == 'icon-email' %}
-                                <span style="font-size: 14px;">📧</span>
-                            {% elsif social.icon == 'icon-wechat' %}
-                                <span style="font-size: 14px;">💬</span>
-                            {% elsif social.icon == 'icon-feishu' %}
-                                <span style="font-size: 14px;">📺</span>
-                            {% else %}
-                                <span style="font-size: 14px;">🔗</span>
-                            {% endif %}
-                        </a>
-                        {% endfor %}
-                    </div>
-                    <p style="margin-top: 15px; font-size: 0.8rem;">{{ site.data.footer.follow_us.description }}</p>
-                </div>
+      <div class="wrapper">
+        <div class="footer-grid">
+          <!-- About Section -->
+          <div class="footer-col">
+            <h5>{{ site.data.footer.about.title }}</h5>
+            <p>{{ site.data.footer.about.description }}</p>
+          </div>
+
+          <!-- Useful Links Section -->
+          <div class="footer-col">
+            <h5>{{ site.data.footer.useful_links.title }}</h5>
+            <ul>
+              {% for link in site.data.footer.useful_links.links %}
+              <li>
+                <a href="{{ link.url | relative_url }}">{{ link.name }}</a>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+
+          <!-- Quick Links Section -->
+          <div class="footer-col">
+            <h5>{{ site.data.footer.quick_links.title }}</h5>
+            <ul>
+              {% for link in site.data.footer.quick_links.links %}
+              <li>
+                <a href="{{ link.url | relative_url }}">{{ link.name }}</a>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+
+          <!-- Follow Us Section -->
+          <div class="footer-col">
+            <h5>{{ site.data.footer.follow_us.title }}</h5>
+            <div class="social-links">
+              {% for social in site.data.footer.follow_us.socials %}
+              <a
+                href="{{ social.url }}"
+                class="social-icon"
+                title="{{ social.name }}"
+              >
+                {% if social.icon == 'icon-github' %}
+                <span style="font-size: 14px">🐱</span>
+                {% elsif social.icon == 'icon-email' %}
+                <span style="font-size: 14px">📧</span>
+                {% elsif social.icon == 'icon-wechat' %}
+                <span style="font-size: 14px">💬</span>
+                {% elsif social.icon == 'icon-feishu' %}
+                <span style="font-size: 14px">📺</span>
+                {% else %}
+                <span style="font-size: 14px">🔗</span>
+                {% endif %}
+              </a>
+              {% endfor %}
             </div>
-            <div class="copyright">
-                {{ site.data.footer.copyright.text }} | {{ site.data.footer.copyright.icp }}
-            </div>
+            <p style="margin-top: 15px; font-size: 0.8rem">
+              {{ site.data.footer.follow_us.description }}
+            </p>
+          </div>
         </div>
+        <div class="copyright">
+          {{ site.data.footer.copyright.text }} | {{
+          site.data.footer.copyright.icp }}
+        </div>
+      </div>
     </footer>
 
-</body>
-</html>
+    <script src="https://cdn.jsdelivr.net/npm/algoliasearch@4.24.0/dist/algoliasearch.umd.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/instantsearch.js/4.80.0/instantsearch.production.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // 1. 浮窗控制逻辑
+        const searchOverlay = document.getElementById('search-overlay');
+        const openSearchBtn = document.querySelector('.search-btn');
+        const closeSearchBtn = document.querySelector('.close-search-btn');
+        const overlayBg = document.querySelector('.search-overlay-bg');
+        const hitsContainer = document.getElementById('global-hits-container');
 
+        function openSearch() {
+          searchOverlay.classList.add('active'); // 使用 active 类控制动画
+          // 延时聚焦输入框
+          setTimeout(() => {
+            const input = document.querySelector('.ais-SearchBox-input');
+            if (input) input.focus();
+          }, 100);
+        }
+
+        function closeSearch() {
+          searchOverlay.classList.remove('active');
+        }
+
+        if (openSearchBtn) {
+          openSearchBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            openSearch();
+          });
+        }
+
+        if (closeSearchBtn) {
+          closeSearchBtn.addEventListener('click', closeSearch);
+        }
+
+        if (overlayBg) {
+          overlayBg.addEventListener('click', closeSearch);
+        }
+
+        // ESC 键关闭
+        document.addEventListener('keydown', function(e) {
+          if (e.key === 'Escape' && searchOverlay.classList.contains('active')) {
+            closeSearch();
+          }
+        });
+
+        // 2. Algolia InstantSearch 初始化
+        const searchClient = algoliasearch(
+          "FBCOWM9UO9",
+          "fe585fa7c5e384b3bc76abe3aa6c74e7"
+        );
+
+        const search = instantsearch({
+          indexName: "ander1716_github_io_fbcowm9uo9_pages",
+          searchClient,
+          searchFunction(helper) {
+            const query = helper.state.query;
+            if (query && query.length >= 1) {
+              hitsContainer.style.display = 'block';
+              helper.search();
+            } else {
+              hitsContainer.style.display = 'none';
+            }
+          },
+        });
+
+        search.addWidgets([
+          instantsearch.widgets.searchBox({
+            container: "#global-search-box",
+            placeholder: "搜索文章、教程...",
+            showReset: true,
+            showSubmit: true,
+            searchAsYouType: true,
+          }),
+          instantsearch.widgets.hits({
+            container: "#global-hits-container",
+            templates: {
+              item(hit, { html, components }) {
+                return html`
+                  <a href="${hit.url}" class="global-search-item">
+                    <span class="hit-title">
+                      ${components.Highlight({ hit, attribute: 'title' })}
+                    </span>
+                    <p class="hit-content">
+                      ${components.Snippet({ hit, attribute: 'content' })}
+                    </p>
+                    <span class="hit-meta">${hit.date}</span>
+                  </a>
+                `;
+              },
+              empty(results, { html }) {
+                return html`<div class="no-results">没有找到与 "${results.query}" 相关的内容</div>`;
+              },
+            },
+          }),
+        ]);
+
+        search.start();
+      });
+    </script>
+  </body>
+</html>

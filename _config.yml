@@ -40,6 +40,8 @@ sass:
     - global-builtin
     - color-functions
 
+algolia:
+  application_id: 'FBCOWM9UO9'
 # Exclude from processing.
 # The following items will not be processed, by default.
 # Any item listed under the `exclude:` key here will be automatically added to
