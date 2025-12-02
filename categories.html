@@ -1,0 +1,75 @@
+---
+layout: default
+title: 文章分类
+permalink: /categories/
+---
+
+<div class="categories-page">
+  <h1>文章分类</h1>
+  
+  <div class="categories-list">
+    {% assign categories_list = site.categories | sort %}
+    {% for category in categories_list %}
+      <div class="category-item">
+        <h2 id="{{ category[0] | slugify }}">
+          {{ category[0] }}
+          <span class="count">({{ category[1] | size }} 篇文章)</span>
+        </h2>
+        <ul class="posts-list">
+          {% assign posts_list = category[1] | sort: 'date' | reverse %}
+          {% for post in posts_list %}
+            <li>
+              <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+              <span class="post-meta">{{ post.date | date: "%Y-%m-%d" }}</span>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+<style>
+  .categories-page {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  .category-item {
+    margin-bottom: 40px;
+  }
+  .category-item h2 {
+    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+  }
+  .count {
+    color: #666;
+    font-size: 0.8em;
+    font-weight: normal;
+  }
+  .posts-list {
+    list-style: none;
+    padding: 0;
+  }
+  .posts-list li {
+    padding: 8px 0;
+    border-bottom: 1px solid #f0f0f0;
+  }
+  .posts-list li:last-child {
+    border-bottom: none;
+  }
+  .posts-list a {
+    text-decoration: none;
+    color: #333;
+  }
+  .posts-list a:hover {
+    color: #007acc;
+  }
+  .post-meta {
+    color: #999;
+    font-size: 0.9em;
+    margin-left: 10px;
+  }
+</style>
+

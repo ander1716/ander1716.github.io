@@ -1,0 +1,51 @@
+# 底部数据配置
+about:
+  title: 关于 z-blog
+  description: >
+    z-blog 是一个有深度分享、设计和产品思考的个人博客，在这里汇聚技术与设计的视角。
+
+useful_links:
+  title: 友情链接
+  links:
+    - name: 技术纵横专栏
+      url: /categories/技术纵横
+    - name: 设计体验专栏
+      url: /categories/设计与体验
+    - name: UX 模型探讨
+      url: /categories/设计与体验
+    - name: 产品思维日记
+      url: /categories/产品思维
+
+quick_links:
+  title: 快速链接
+  links:
+    - name: 首页
+      url: /
+    - name: 分类分类
+      url: /categories.html
+    - name: 文章归档
+      url: /archive.html
+    - name: 关于我
+      url: /about.html
+
+follow_us:
+  title: 关注我
+  socials:
+    - icon: icon-github
+      name: Github
+      url: "#"
+    - icon: icon-email
+      name: 邮箱
+      url: "#"
+    - icon: icon-wechat
+      name: 微信
+      url: "#"
+    - icon: icon-feishu
+      name: 飞书
+      url: "#"
+  description: |
+    订阅我，获取技术、设计和工作笔记
+
+copyright:
+  text: "© 2023 z-blog 版权所有"
+  icp: 京ICP备12345678号

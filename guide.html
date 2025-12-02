@@ -1,0 +1,157 @@
+---
+layout: null
+title: 网站导航
+---
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ page.title }} | z-blog</title>
+    <link
+      rel="stylesheet"
+      href="{{ '/assets/css/guided.css' | relative_url }}"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      href="{{ '/assets/icons/codeing.png' | relative_url }}"
+    />
+  </head>
+  <body>
+    <div class="geek-container">
+      <!-- Sidebar -->
+      <aside class="geek-sidebar">
+        <div class="sidebar-header">
+          <h1>
+            <a href="/">{{ site.data.guided.title }}</a>
+          </h1>
+          <p>{{ site.data.guided.description }}</p>
+        </div>
+
+        <div class="sidebar-nav-wrapper">
+          <ul class="nav-menu" id="navMenu">
+            {% for category in site.data.guided.links %}
+            <li class="nav-item">
+              <a
+                href="#category-{{ forloop.index }}"
+                class="nav-link"
+                data-target="category-{{ forloop.index }}"
+              >
+                {{ category.name }}
+              </a>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="geek-content" id="mainContent">
+        {% for category in site.data.guided.links %}
+        <section id="category-{{ forloop.index }}" class="category-section">
+          <h2 class="category-title">{{ category.name }}</h2>
+          <div class="items-grid">
+            {% for item in category.items %}
+            <a
+              href="{{ item.url }}"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="item-card"
+              title="{{ item.name }}"
+            >
+              <div class="item-icon">
+                <!-- Use external favicon service or fallback to local icon -->
+                {% assign fallback_icon = '/assets/icons/codeing.png' |
+                relative_url %}
+                <img
+                  src="https://www.google.com/s2/favicons?domain={{ item.url }}&sz=64"
+                  onerror="this.onerror=null;this.src='{{ fallback_icon }}';"
+                  alt="{{ item.name }}"
+                />
+              </div>
+              <div class="item-info">
+                <div class="item-name">{{ item.name }}</div>
+              </div>
+            </a>
+            {% endfor %}
+          </div>
+        </section>
+        {% endfor %}
+      </main>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const navLinks = document.querySelectorAll(".nav-link");
+        const mainContent = document.getElementById("mainContent");
+        const sections = document.querySelectorAll(".category-section");
+
+        // Smooth scroll to section on click
+        navLinks.forEach((link) => {
+          link.addEventListener("click", function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute("data-target");
+            const targetSection = document.getElementById(targetId);
+
+            if (targetSection) {
+              // Remove active class from all links
+              navLinks.forEach((l) => l.classList.remove("active"));
+              // Add active class to clicked link
+              this.classList.add("active");
+
+              // Scroll to section
+              targetSection.scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+              });
+            }
+          });
+        });
+
+        // Highlight active menu item on scroll
+        // Using Intersection Observer for better performance
+        const observerOptions = {
+          root: mainContent,
+          threshold: 0.2, // Trigger when 20% of the section is visible
+          rootMargin: "-10% 0px -70% 0px", // Adjust active area
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const id = entry.target.getAttribute("id");
+
+              // Remove active class from all links
+              navLinks.forEach((link) => link.classList.remove("active"));
+
+              // Add active class to corresponding link
+              const activeLink = document.querySelector(
+                `.nav-link[data-target="${id}"]`
+              );
+              if (activeLink) {
+                activeLink.classList.add("active");
+
+                // Scroll sidebar to keep active link in view if needed
+                activeLink.scrollIntoView({
+                  behavior: "smooth",
+                  block: "nearest",
+                });
+              }
+            }
+          });
+        }, observerOptions);
+
+        sections.forEach((section) => {
+          observer.observe(section);
+        });
+
+        // Activate first item initially
+        if (navLinks.length > 0) {
+          navLinks[0].classList.add("active");
+        }
+      });
+    </script>
+  </body>
+</html>

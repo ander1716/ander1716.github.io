@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if page.title %}{{ page.title }} - {% endif %}z-blog</title>
+    <link rel="stylesheet" href="{{ '/assets/css/home.css' | relative_url }}">
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="site-header">
+        <div class="wrapper header-inner">
+            <a href="{{ '/' | relative_url }}" class="site-title">
+                <span class="logo-circle">zyc</span>
+                z-blog
+            </a>
+            <nav class="site-nav">
+                {% for item in site.data.navigation %}
+                    {% if item.sublinks %}
+                        <!-- Dropdown menu for categories -->
+                        <div class="nav-dropdown">
+                            <button type="button" class="nav-dropdown-toggle">{{ item.name }}</button>
+                            <div class="nav-dropdown-menu">
+                                {% for sublink in item.sublinks %}
+                                <a href="{{ sublink.url | relative_url }}">{{ sublink.name }}</a>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    {% else %}
+                        <!-- Regular navigation link -->
+                        <a href="{{ item.url | relative_url }}">{{ item.name }}</a>
+                    {% endif %}
+                {% endfor %}
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    {{ content }}
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="wrapper">
+            <div class="footer-grid">
+                <!-- About Section -->
+                <div class="footer-col">
+                    <h5>{{ site.data.footer.about.title }}</h5>
+                    <p>{{ site.data.footer.about.description }}</p>
+                </div>
+                
+                <!-- Useful Links Section -->
+                <div class="footer-col">
+                    <h5>{{ site.data.footer.useful_links.title }}</h5>
+                    <ul>
+                        {% for link in site.data.footer.useful_links.links %}
+                        <li><a href="{{ link.url | relative_url }}">{{ link.name }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                
+                <!-- Quick Links Section -->
+                <div class="footer-col">
+                    <h5>{{ site.data.footer.quick_links.title }}</h5>
+                    <ul>
+                        {% for link in site.data.footer.quick_links.links %}
+                        <li><a href="{{ link.url | relative_url }}">{{ link.name }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                
+                <!-- Follow Us Section -->
+                <div class="footer-col">
+                    <h5>{{ site.data.footer.follow_us.title }}</h5>
+                    <div class="social-links">
+                        {% for social in site.data.footer.follow_us.socials %}
+                        <a href="{{ social.url }}" class="social-icon" title="{{ social.name }}">
+                            {% if social.icon == 'icon-github' %}
+                                <span style="font-size: 14px;">🐱</span>
+                            {% elsif social.icon == 'icon-email' %}
+                                <span style="font-size: 14px;">📧</span>
+                            {% elsif social.icon == 'icon-wechat' %}
+                                <span style="font-size: 14px;">💬</span>
+                            {% elsif social.icon == 'icon-feishu' %}
+                                <span style="font-size: 14px;">📺</span>
+                            {% else %}
+                                <span style="font-size: 14px;">🔗</span>
+                            {% endif %}
+                        </a>
+                        {% endfor %}
+                    </div>
+                    <p style="margin-top: 15px; font-size: 0.8rem;">{{ site.data.footer.follow_us.description }}</p>
+                </div>
+            </div>
+            <div class="copyright">
+                {{ site.data.footer.copyright.text }} | {{ site.data.footer.copyright.icp }}
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
+

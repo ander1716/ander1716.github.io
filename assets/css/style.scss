@@ -1,0 +1,387 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+---
+
+@import "minima";
+
+/* 强制覆盖 Minima 的默认 wrapper 宽度，让布局更宽敞 */
+.wrapper {
+  max-width: 1400px !important; /* 增加到 1400px，适应现代屏幕 */
+  padding-right: 40px !important;
+  padding-left: 40px !important;
+}
+
+/* Reset & Base */
+:root {
+  --primary-color: #2FBFA0; /* Teal/Mint color from design */
+  --primary-dark: #259a82;
+  --bg-light: #F7F9FB; /* Light gray background */
+  --text-dark: #333333;
+  --text-gray: #666666;
+  --text-light: #999999;
+  --white: #ffffff;
+  --border-color: #EAEAEA;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --shadow-sm: 0 2px 8px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+body {
+  background-color: var(--bg-light);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: var(--text-dark);
+}
+
+.site-header {
+  background-color: var(--white);
+  border-bottom: none;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+  
+  .site-title {
+    display: flex;
+    align-items: center;
+    
+    &:before {
+      content: "zyc"; /* Logo placeholder logic */
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--primary-color);
+      color: white;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      margin-right: 10px;
+      font-size: 14px;
+      font-weight: bold;
+    }
+  }
+}
+
+/* Custom Layout Components */
+
+/* Hero Section */
+.hero-section {
+  background: linear-gradient(135deg, #6DD5FA 0%, #2FBFA0 100%);
+  padding: 80px 20px;
+  text-align: center;
+  color: white;
+  margin-bottom: 40px;
+  border-radius: 0;
+  /* Break out of parent container to full width */
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    font-weight: 700;
+  }
+  
+  p {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+    opacity: 0.9;
+  }
+  
+  .hero-search {
+    max-width: 600px;
+    margin: 0 auto;
+    position: relative;
+    
+    input {
+      width: 100%;
+      padding: 15px 25px;
+      border-radius: 30px;
+      border: none;
+      font-size: 1rem;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      
+      &:focus {
+        outline: none;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+      }
+    }
+    
+    &:after {
+      content: "🔍";
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #ccc;
+      display: none; /* Simplified for now */
+    }
+  }
+}
+
+/* Main Container Layout */
+.home-container {
+  display: flex;
+  gap: 100px;
+  max-width: 100%; /* 让它填满 wrapper */
+  margin: 0 auto;
+  padding: 0; /* padding 已经由 wrapper 提供了 */
+  
+  @media (max-width: 1000px) {
+     flex-direction: column;
+  }
+}
+
+.main-content {
+  flex: 1;
+  min-width: 0; /* Prevents flex item from overflowing */
+}
+
+.sidebar {
+  width: 320px; /* Fixed width sidebar */
+  flex-shrink: 0;
+  
+  @media (max-width: 1000px) {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+/* Post Cards */
+.post-card {
+  background: var(--white);
+  border-radius: var(--radius-md);
+  padding: 25px;
+  margin-bottom: 25px;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: 1px solid transparent;
+  
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--primary-color);
+  }
+  
+  .post-meta-tags {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+    
+    .category-tag {
+      font-size: 0.8rem;
+      color: var(--primary-color);
+      background: rgba(47, 191, 160, 0.1);
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+    .date-meta {
+      font-size: 0.8rem;
+      color: var(--text-light);
+    }
+  }
+  
+  h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    line-height: 1.3;
+    
+    a {
+      color: var(--text-dark);
+      text-decoration: none;
+      
+      &:hover {
+        color: var(--primary-color);
+      }
+    }
+  }
+  
+  .post-excerpt {
+    color: var(--text-gray);
+    margin-bottom: 15px;
+    line-height: 1.6;
+  }
+  
+  .post-tags-list {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    
+    .tag-pill {
+      background: #f0f2f5;
+      color: var(--text-gray);
+      font-size: 0.75rem;
+      padding: 3px 10px;
+      border-radius: 12px;
+    }
+  }
+  
+  .read-more {
+    display: inline-block;
+    margin-top: 15px;
+    color: var(--primary-color);
+    font-weight: 500;
+    text-decoration: none;
+    
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+/* Featured Post Styling (First card style) */
+.post-card.featured {
+  display: flex;
+  gap: 20px;
+  background: linear-gradient(to right, #e6f7ff, #ffffff); /* Subtle gradient */
+  
+  @media (max-width: 600px) {
+    flex-direction: column;
+  }
+  
+  .featured-image-placeholder {
+    flex: 1;
+    min-height: 150px;
+    background: linear-gradient(45deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%); /* Placeholder gradient */
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 2rem;
+  }
+  
+  .featured-content {
+    flex: 2;
+  }
+}
+
+
+/* Sidebar Widgets */
+.sidebar-widget {
+  background: var(--white);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  margin-bottom: 25px;
+  box-shadow: var(--shadow-sm);
+  
+  h4 {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    border-left: 4px solid var(--primary-color);
+    padding-left: 10px;
+  }
+  
+  .search-box-mini {
+    input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      font-size: 0.9rem;
+    }
+  }
+  
+  .category-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    
+    li {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 0;
+      border-bottom: 1px solid #f5f5f5;
+      font-size: 0.95rem;
+      
+      a {
+        color: var(--text-dark);
+        text-decoration: none;
+        &:hover { color: var(--primary-color); }
+      }
+      
+      .count-badge {
+        background: #f0f0f0;
+        color: #888;
+        font-size: 0.75rem;
+        padding: 2px 8px;
+        border-radius: 10px;
+      }
+    }
+  }
+  
+  .tag-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    
+    a {
+      background: #f5f7fa;
+      color: var(--text-gray);
+      padding: 5px 12px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      text-decoration: none;
+      transition: all 0.2s;
+      
+      &:hover {
+        background: var(--primary-color);
+        color: white;
+      }
+    }
+  }
+  
+  .hot-posts-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    
+    li {
+      margin-bottom: 15px;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      
+      .rank-num {
+        background: var(--primary-color);
+        color: white;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.75rem;
+        flex-shrink: 0;
+        margin-top: 3px;
+      }
+      
+      a {
+        color: var(--text-dark);
+        font-size: 0.95rem;
+        line-height: 1.4;
+        text-decoration: none;
+        &:hover { color: var(--primary-color); }
+      }
+    }
+  }
+}
+
+/* Footer Styling Overrides */
+.site-footer {
+  background-color: #2d3436;
+  color: #dfe6e9;
+  padding: 40px 0;
+  
+  .footer-col-wrapper {
+    color: #b2bec3;
+  }
+  
+  a {
+    color: #81ecec;
+    &:hover { color: #fff; }
+  }
+}
+

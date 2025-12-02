@@ -1,0 +1,551 @@
+title: 常用网站导航大全
+description: 常用网站导航
+links:
+- name: AI
+  items:
+  - name: Copilot
+    url: https://copilot.microsoft.com/
+  - name: ChatGPT
+    url: https://chatgpt.com/
+  - name: Gemini
+    url: https://gemini.google.com/app
+  - name: 文心一言
+    url: https://yiyan.baidu.com/
+  - name: 通义千问
+    url: https://tongyi.aliyun.com/qianwen/
+  - name: Kimi
+    url: https://kimi.moonshot.cn/?utm_campaign=TR_KCTflHiP&utm_content=&utm_medium=%E7%BD%91%E7%AB%99&utm_source=CH_tfR6QSUQ&utm_term=
+  - name: 提示工程
+    url: https://platform.openai.com/docs/guides/prompt-engineering
+  - name: AI全栈
+    url: https://agiclass.feishu.cn/wiki/EztTwL9wniRVXXkW8itcvdyFnhc
+  - name: Transformers
+    url: https://huggingface.co/docs/transformers.js/main/en/index
+  - name: DevAGI
+    url: https://devcto.com/
+  - name: Coze
+    url: https://www.coze.cn/home
+  - name: Dify
+    url: https://dify.ai/
+  - name: Tabby
+    url: https://tabby.tabbyml.com/
+  - name: CopilotHub
+    url: https://github.com/copilot
+  - name: Ollama
+    url: https://ollama.com/
+  - name: 硅基流动
+    url: https://cloud.siliconflow.cn/models
+  - name: Grok
+    url: https://grok.com/?referrer=website
+  - name: DeepSeek
+    url: https://chat.deepseek.com/
+  - name: AI搜索
+    url: https://chat.baidu.com/search?isShowHello=1&pd=csaitab&setype=csaitab&extParamsJson=%7B%22enter_type%22%3A%22ai_explore_home%22%7D&usedModel=%7B%22modelName%22%3A%22DeepSeek-R1%22%7D
+  - name: 直答
+    url: https://zhida.zhihu.com/
+  - name: Claude学园
+    url: https://academy.claude-code.club/
+  - name: 闪AI
+    url: https://shanjian-openapi.apifox.cn/
+  - name: Claude客
+    url: https://customer.claude-code.club/dashboard?tab=statistics
+  - name: 智谱AI
+    url: https://bigmodel.cn/
+  - name: 豆包
+    url: https://www.doubao.com/chat
+  - name: 千问Qwen
+    url: https://www.qianwen.com/?source=baidu_brandzone
+  - name: Chatly
+    url: https://chatlyai.app/chat/6fe2f67b-dd91-403b-8b74-a1fb897e35f6?utm_model=vgpt-g3-0p
+- name: H5+CSS3
+  items:
+  - name: canvas API蚂蚁部落
+    url: http://www.softwhy.com/
+  - name: 浏览器引擎 -  | MDN
+    url: https://developer.mozilla.org/zh-CN/docs/Glossary/Vendor_Prefix
+  - name: w3cplus_引领we前沿打
+    url: http://www.w3cplus.com/
+  - name: w3school 在线教程
+    url: http://www.w3school.com.cn/
+  - name: DaFont - D
+    url: https://www.dafont.com/
+  - name: Google Fon
+    url: https://fonts.google.com/
+  - name: The Comple
+    url: https://medium.com/@js_tut/the-complete-css-flex-box-tutorial-d17971950bdc
+  - name: canvas API蚂蚁部落
+    url: http://www.softwhy.com/
+  - name: 浏览器引擎 -  | MDN
+    url: https://developer.mozilla.org/zh-CN/docs/Glossary/Vendor_Prefix
+  - name: w3cplus_引领we前沿打
+    url: http://www.w3cplus.com/
+  - name: w3school 在线教程
+    url: http://www.w3school.com.cn/
+  - name: DaFont - D
+    url: https://www.dafont.com/
+  - name: Google Fon
+    url: https://fonts.google.com/
+  - name: The Comple
+    url: https://medium.com/@js_tut/the-complete-css-flex-box-tutorial-d17971950bdc
+- name: MCP
+  items:
+  - name: MCP 文档 - Mod
+    url: https://modelcontextprotocol.io/introduction
+  - name: MCP 官方服务（聚）
+    url: https://mcp.so/zh
+  - name: awesome-mc
+    url: https://github.com/punkpeye/awesome-mcp-servers
+  - name: 一人企业方
+    url: https://r2.ft07.com/opb-book-2.1.pdf
+  - name: Tailwind C
+    url: https://www.tailwindcss.cn/
+- name: Nodeing
+  items:
+  - name: Node.js
+    url: https://nodejs.org/en/
+  - name: Run JavaSc
+    url: https://nodejs.dev/en/
+  - name: CNode：Node专业中文社
+    url: https://cnodejs.org/
+  - name: Nodejs技术栈
+    url: https://www.nodejs.red/#/
+- name: UI
+  items:
+  - name: 花瓣网 - 陪你（，、、）
+    url: https://huaban.com/
+  - name: 站酷ZCOOL-设计师-,!
+    url: https://www.zcool.com.cn/
+  - name: Dribbble -
+    url: https://dribbble.com/
+- name: eslist
+  items:
+  - name: List of av中文
+    url: http://eslint.cn/docs/rules/
+  - name: standard/R
+    url: https://github.com/standard/standard/blob/master/docs/RULES-zhcn.md
+  - name: wjx_uni/in
+    url: https://github.com/wangjinxin613/wjx_uni/blob/master/pages/index/index.vue
+- name: js库
+  items:
+  - name: dayjs/READ
+    url: https://github.com/iamkun/dayjs/blob/dev/docs/zh-cn/README.zh-CN.md
+  - name: VueUse
+    url: https://vueuse.org/
+  - name: 30 seconds
+    url: https://www.30secondsofcode.org/
+  - name: Favorite J
+    url: https://1loc.dev/
+  - name: 2ality – J
+    url: https://2ality.com/
+- name: linux
+  items:
+  - name: Linux修改挂载目 -  -
+    url: https://www.cnblogs.com/kerrycode/p/6855451.html
+  - name: Linux学习教程，Linu入
+    url: http://c.biancheng.net/linux_tutorial/
+  - name: Linux新用户登录“-bas
+    url: https://www.jianshu.com/p/5a0e29dd761f
+  - name: Kubernetes中文文档概
+    url: https://www.kubernetes.org.cn/k8s
+  - name: Linux系统，切换用$_su
+    url: https://blog.csdn.net/qq_25844137/article/details/80841451
+- name: nestjs
+  items:
+  - name: Api Refere
+    url: https://api-references-nestjs.netlify.app/api
+  - name: Documentat
+    url: https://docs.nestjs.com/
+  - name: Nest.js 中文文档
+    url: https://docs.nestjs.cn/
+  - name: nest-js_小满zs的博客
+    url: https://blog.csdn.net/qq1195566313/category_11844396.html
+  - name: chnirt/nes
+    url: https://github.com/chnirt/nestjs-graphql-best-practice
+- name: node-up
+  items:
+  - name: koa中间件集锦
+    url: https://github.com/koajs/koa/wiki
+  - name: vnshop10/s
+    url: https://github.com/itguide/vnshop10/tree/master/server
+  - name: i5ting_ztr
+    url: https://i5ting.github.io/How-to-learn-node-correctly/
+  - name: StuQ《Node.微信开发看
+    url: https://www.kancloud.cn/kancloud/wechat-dev-with-nodejs
+  - name: feupjs/vns商城项目
+    url: https://github.com/feupjs/vnshop
+  - name: Express - 基于平台的
+    url: https://www.expressjs.com.cn/
+  - name: Mongoose.j中文网
+    url: http://www.mongoosejs.net/
+  - name: NestJS - A
+    url: https://nestjs.com/
+  - name: TypeORM 中文文档
+    url: https://typeorm.bootcss.com/
+  - name: snippet ge
+    url: https://snippet-generator.app/
+  - name: redis/redi
+    url: https://github.com/redis/redis
+- name: python
+  items:
+  - name: 撸代码，学知 -
+    url: https://zhuanlan.zhihu.com/pythoner
+  - name: Python3 教程 |菜鸟教
+    url: https://www.runoob.com/python3/python3-tutorial.html
+  - name: 3.8.0 Docu
+    url: https://docs.python.org/zh-cn/3/
+  - name: 爬虫-Python爬虫常 -
+    url: https://www.cnblogs.com/klb561/p/8988051.html
+  - name: 80个Python练手项目 -
+    url: https://www.shiyanlou.com/questions/102676/?utm_source=baidu&utm_medium=cpc&utm_campaign=python&utm_term=keywords
+  - name: Python 基础教程 | 菜
+    url: https://www.runoob.com/python/python-tutorial.html
+- name: 书签栏
+  items:
+  - name: LTE无线路由器
+    url: http://192.168.1.1/index.html
+- name: 前端学习
+  items:
+  - name: 前端45期学员
+    url: https://duyiedu.yuque.com/fmi7t1/nwhh7g/ss9nl96a3pz7ntv9?singleDoc=
+  - name: 开始 – React
+    url: https://zh-hans.legacy.reactjs.org/docs/getting-started.html
+  - name: Describing
+    url: https://18.react.dev/learn/describing-the-ui
+  - name: React Rout
+    url: https://reactrouter.com/home
+  - name: Vue.js - 渐进式 框架
+    url: https://cn.vuejs.org/
+- name: 前端实现
+  items:
+  - name: JavaScript实现图片裁
+    url: http://www.ibooker.cc/article/43/detail
+  - name: 【前端】图片裁（）Jcrop
+    url: https://www.jianshu.com/p/8255de62a78a
+  - name: 内功修炼之lodash——fu
+    url: https://cloud.tencent.com/developer/article/1532427
+  - name: ECMAScript
+    url: http://www.ecma-international.org/ecma-262/6.0/
+- name: 前端统筹管
+  items:
+  - name: 【转载】前端项 - CSDN
+    url: https://blog.csdn.net/hicoldcat/article/details/53995337
+  - name: 前端技术选 --- - joy
+    url: https://www.cnblogs.com/ycxqdkf/p/7732807.html
+  - name: Gulp 自动化你的 |
+    url: https://www.sheyilin.com/2016/02/gulp_introduce/
+  - name: rollup.js 中文文档中
+    url: https://www.rollupjs.com/guide/zh
+  - name: 公司技术选 -
+    url: http://naotu.baidu.com/file/dc7387bbd1bec86fba8e91c87511b222
+  - name: 公司技术选 -
+    url: http://defxa.favopen.com/Baidu0312
+  - name: 03 | 复杂度分析（）：、？
+    url: https://time.geekbang.org/column/article/40036
+  - name: 一步一步搭：？ -
+    url: https://www.jianshu.com/p/c4549c28c64f
+  - name: (1条消息)服务_-CSDN
+    url: https://blog.csdn.net/woleigequshawanyier/article/details/86370471
+  - name: 微信支付 - 中 ｜
+    url: https://pay.weixin.qq.com/index.php/core/home/login?return_url=%2F
+  - name: 【转载】前端项 - CSDN
+    url: https://blog.csdn.net/hicoldcat/article/details/53995337
+  - name: 前端技术选 --- - joy
+    url: https://www.cnblogs.com/ycxqdkf/p/7732807.html
+  - name: Gulp 自动化你的 |
+    url: https://www.sheyilin.com/2016/02/gulp_introduce/
+  - name: rollup.js 中文文档中
+    url: https://www.rollupjs.com/guide/zh
+  - name: 公司技术选 -
+    url: http://naotu.baidu.com/file/dc7387bbd1bec86fba8e91c87511b222
+  - name: 公司技术选 -
+    url: http://defxa.favopen.com/Baidu0312
+  - name: 03 | 复杂度分析（）：、？
+    url: https://time.geekbang.org/column/article/40036
+  - name: 一步一步搭：？ -
+    url: https://www.jianshu.com/p/c4549c28c64f
+  - name: 商品添加
+    url: http://192.168.0.115:8080/#/commodity/add
+  - name: (1条消息)服务_-CSDN
+    url: https://blog.csdn.net/woleigequshawanyier/article/details/86370471
+- name: 各种规范
+  items:
+  - name: CommonJS S
+    url: http://wiki.commonjs.org/wiki/CommonJS
+  - name: ECMAScript
+    url: https://www.ecma-international.org/ecma-262/6.0/#sec-exports
+  - name: HTML Stand
+    url: https://html.spec.whatwg.org/
+  - name: Async Func
+    url: https://tc39.github.io/ecmascript-asyncawait/
+  - name: CommonJS S
+    url: http://wiki.commonjs.org/wiki/CommonJS
+  - name: ECMAScript
+    url: https://www.ecma-international.org/ecma-262/6.0/#sec-exports
+  - name: HTML Stand
+    url: https://html.spec.whatwg.org/
+  - name: Async Func
+    url: https://tc39.github.io/ecmascript-asyncawait/
+- name: 后端
+  items:
+  - name: 解决MySQL不需要 - Yo
+    url: https://www.cnblogs.com/youpeng/p/11905051.html
+  - name: Kubernetes中文社区分
+    url: https://www.kubernetes.org.cn/
+  - name: java 练习题，共计 194
+    url: https://how2j.cn/frontshowJavaPractises?p=149557
+  - name: 首页-KuangStud
+    url: https://www.kuangstudy.com/
+  - name: https://mp
+    url: https://mp.weixin.qq.com/mp/homepage?__biz=Mzg2NTAzMTExNg==&hid=1&sn=3247dca1433a891523d9e4176c90c499
+  - name: 2023黑马程序员Java -
+    url: https://www.bilibili.com/read/cv9965357?spm_id_from=333.999.0.0
+  - name: Java_技术栈_牛客
+    url: https://www.nowcoder.com/stack/23
+  - name: Java教程_编程入_
+    url: https://www.nowcoder.com/tutorial/10001/5fc0c07cd9d44e66b3baafd76f1f5b9f
+  - name: 蚂蚁课堂-每 ！
+    url: https://appvxnsma4r5053.pc.xiaoe-tech.com/
+  - name: 元动力 | 心中，
+    url: https://www.ydlclass.com/ui/learningPath
+  - name: 7-1、面向对象开__bili
+    url: https://www.bilibili.com/video/BV1h64y1i78N?p=68&spm_id_from=pageDriver&vd_source=4104b2976e07a166ab626b814655fed1
+- name: 图片素材
+  items:
+  - name: ▷ food pho
+    url: https://en.freejpg.com.ar/free/images/?criterio=food
+  - name: pixabay
+    url: https://pixabay.com/zh/
+  - name: 图搜首页
+    url: https://image.baidu.com/
+- name: 学习
+  items:
+  - name: ECMAScript入门入门
+    url: http://es6.ruanyifeng.com/
+  - name: 44 个 JavaSc变态题解
+    url: https://juejin.im/entry/58adabd6da2f6054bd1f499f
+  - name: Node.js写爬虫系列 -
+    url: https://cnodejs.org/topic/57c529cf9b447b634391c814
+  - name: Annotated
+    url: https://es5.github.io/
+  - name: ECMAScript
+    url: http://www.ecma-international.org/ecma-262/6.0/index.html
+  - name: Babel · 用于编写下 J
+    url: https://www.babeljs.cn/repl/#?babili=false&browsers=&build=&builtIns=false&code_lz=Q&debug=false&forceAllTransforms=false&shippedProposals=false&circleciRepo=&evaluate=false&fileSize=false&lineWrap=true&presets=es2015%2Creact%2Cstage-2&prettier=false&targets=&version=6.26.0&envVersion=
+  - name: Playground
+    url: http://www.typescriptlang.org/play/index.html
+  - name: BootCDN - 中文网开源
+    url: https://www.bootcdn.cn/
+  - name: 前言 · TypeScr入门教
+    url: https://ts.xcatliu.com/
+  - name: ES6 数组的扩展 - ES6
+    url: http://caibaojian.com/es6/array.html
+  - name: 深入理解javascript原
+    url: http://www.cnblogs.com/wangfupeng1988/p/3977924.html
+  - name: JavaScript标准参考教
+    url: http://javascript.ruanyifeng.com/#introduction
+  - name: 已购课程
+    url: https://edu.lagou.com/learn
+  - name: 极客时间-轻，-
+    url: https://time.geekbang.org/dashboard/course?utm_campaign=guanwang&utm_source=baidu-ad&utm_medium=ppzq-pc&utm_content=title&utm_term=baidu-ad-ppzq-title
+  - name: Evan's blo
+    url: https://xugaoyi.com/
+  - name: 首页 · React源码解
+    url: https://react.jokcy.me/
+  - name: 前言 · JavaScr迷你书
+    url: https://www.kancloud.cn/kancloud/promises-book/44237
+  - name: ECMAScript入门入门
+    url: http://es6.ruanyifeng.com/
+  - name: 44 个 JavaSc变态题解
+    url: https://juejin.im/entry/58adabd6da2f6054bd1f499f
+  - name: Node.js写爬虫系列 -
+    url: https://cnodejs.org/topic/57c529cf9b447b634391c814
+  - name: Annotated
+    url: https://es5.github.io/
+  - name: ECMAScript
+    url: http://www.ecma-international.org/ecma-262/6.0/index.html
+  - name: Babel · 用于编写下 J
+    url: https://www.babeljs.cn/repl/#?babili=false&browsers=&build=&builtIns=false&code_lz=Q&debug=false&forceAllTransforms=false&shippedProposals=false&circleciRepo=&evaluate=false&fileSize=false&lineWrap=true&presets=es2015%2Creact%2Cstage-2&prettier=false&targets=&version=6.26.0&envVersion=
+  - name: Playground
+    url: http://www.typescriptlang.org/play/index.html
+  - name: BootCDN - 中文网开源
+    url: https://www.bootcdn.cn/
+  - name: 前言 · TypeScr入门教
+    url: https://ts.xcatliu.com/
+  - name: ES6 数组的扩展 - ES6
+    url: http://caibaojian.com/es6/array.html
+  - name: 深入理解javascript原
+    url: http://www.cnblogs.com/wangfupeng1988/p/3977924.html
+  - name: JavaScript标准参考教
+    url: http://javascript.ruanyifeng.com/#introduction
+- name: 工具
+  items:
+  - name: Introducti指南
+    url: https://webpack.toobug.net/zh-cn/
+  - name: CommonJS规范 -标准参
+    url: http://javascript.ruanyifeng.com/nodejs/module.html
+  - name: 使用说明 · Axios 中
+    url: https://www.kancloud.cn/yunye/axios/234845
+  - name: 简介 - Markdow
+    url: https://shd101wyy.github.io/markdown-preview-enhanced/#/zh-cn/
+  - name: ESLint - P中文
+    url: https://cn.eslint.org/
+  - name: judasn/Int简体中文专
+    url: https://github.com/judasn/IntelliJ-IDEA-Tutorial
+  - name: 端口开放状 · Free On
+    url: https://portchecker.cc/zh
+  - name: Quelle est
+    url: https://whoer.net/fr
+  - name: 乌云网丨白Wooyun
+    url: http://www.anquan.us/
+  - name: 渗透师 网络
+    url: https://www.shentoushi.top/knowledge
+  - name: IBM develo中国
+    url: https://www.ibm.com/developerworks/cn/web/
+  - name: 弹幕系统很？！ -
+    url: https://juejin.im/post/5b20758d5188257d555c5c34
+  - name: TypeScript
+    url: https://www.typescriptlang.org/docs/handbook/typescript-from-scratch.html
+- name: 暂时收藏
+  items:
+  - name: Fundebug -不放过每一
+    url: https://fundebug.com/
+  - name: 10 JavaScr
+    url: https://www.infoworld.com/article/3196070/node-js/10-javascript-concepts-nodejs-programmers-must-master.html
+  - name: Pluralsigh
+    url: https://www.pluralsight.com/
+  - name: 前端编码规（2）—— HTML
+    url: http://www.css88.com/archives/5364
+  - name: display 的 3种写法兴
+    url: https://buluo.qq.com/p/detail.html?bid=322912&pid=3044187-1516114561&from=
+  - name: jobbole/aw资源大全中
+    url: https://github.com/jobbole/awesome-javascript-cn
+  - name: 在线课堂 - 汇
+    url: http://www.hubwiz.com/class/5594e91ac086935f4a6fb8ef
+  - name: js右击事件 - 晨 -
+    url: https://www.cnblogs.com/chenluomenggongzi/p/5777545.html
+  - name: HTML DOM E对象
+    url: http://www.w3school.com.cn/jsref/dom_obj_event.asp
+  - name: ngx-weui |
+    url: https://cipchk.github.io/ngx-weui/#/docs/start
+  - name: Express - 基于平台的
+    url: http://www.expressjs.com.cn/
+  - name: '代码库 - NEC : 更好C'
+    url: http://nec.netease.com/library
+  - name: 领扣 (LeetCode极客挚
+    url: https://leetcode-cn.com/
+  - name: 酷狗音乐wap端API -
+    url: https://segmentfault.com/a/1190000010222913#articleHeader1
+- name: 瑞利恩
+  items:
+  - name: 运营端
+    url: https://js.design/f/CCj9fZ?p=Vd-uxezIoN&mode=programmer
+  - name: 教师端
+    url: https://js.design/f/D0F9IF?p=KvkIZiwyuu&mode=design
+  - name: 企业端
+    url: https://js.design/f/94wnaM?p=WMkabl-RJo&mode=design
+  - name: ​产教融合平台
+    url: https://u1eph6dxqt4.feishu.cn/docx/I9r2dnFgVouIOjxwZNicoNRwnHc
+  - name: 产教融合运-
+    url: https://lanhuapp.com/web/#/item/project/stage?tid=497377ad-c05f-4c98-8706-068c6fc85385&pid=216f5b8b-0e47-4ba8-b5d2-de82012cf567
+  - name: 可视化表格 VTable de
+    url: https://visactor.io/vtable/example
+  - name: 产教融合平台
+    url: https://u1eph6dxqt4.feishu.cn/docx/I9r2dnFgVouIOjxwZNicoNRwnHc?blockId=Ox3tdFQPRodZfkxgVA2caNaenhh&blockToken=XSRIwBr3UhHvDhbuRoLcCF8Tndb&blockType=whiteboard&doc_app_id=501
+  - name: FuAdmin/fu采用当前最
+    url: https://github.com/FuAdmin/fu-admin
+  - name: NinjaAPI
+    url: http://47.109.95.174:9527/api/docs
+  - name: NinjaAPI 正式环境服
+    url: http://36.134.25.19:9527/api/docs
+  - name: 原型演示 - 蓝
+    url: https://lanhuapp.com/web/#/item/project/protoDetach/edit/entry?sId=2f642c47-f966-4c67-a90b-afdc3a5a2b3d&pid=216f5b8b-0e47-4ba8-b5d2-de82012cf567&type=web
+  - name: DeepSeek -探索未至之
+    url: https://chat.deepseek.com/a/chat/s/6ec5f9c5-3121-48fc-a311-556d259c6001
+  - name: 宝塔Linux面板
+    url: https://36.134.25.19:28751/files
+  - name: "‌\uFEFF⁢​⁤‍⁢⁡‍‌各项目标签"
+    url: https://shujufuwubu.feishu.cn/wiki/KJo8wF936iRLpCkgdrfcaUbjnve
+  - name: 首页 - 产教融
+    url: http://36.134.25.19:3000/#/analysis
+  - name: 项目评价
+    url: https://doc.apipost.net/docs/detail/466f09a7707c000?target_id=26df6676bfe004
+- name: 电子书
+  items:
+  - name: Flutter实战·第二版
+    url: https://book.willh.cn/
+- name: 英文站
+  items:
+  - name: DEV Commun
+    url: https://dev.to/
+  - name: Stack Over
+    url: https://stackoverflow.com/
+  - name: Job Search
+    url: https://hk.indeed.com/?r=us
+  - name: Learn Engl
+    url: https://www.youtube.com/watch?v=jNI0fiX4q4A&t=329s
+- name: 蓝湖
+  items:
+  - name: Components组件
+    url: https://daisyui.com/components/
+  - name: Heroicons
+    url: https://heroicons.com/
+  - name: UnoCSS Int
+    url: https://unocss.dev/
+  - name: 介绍 - Vant 4
+    url: https://vant-contrib.gitee.io/vant/#/zh-CN/home
+  - name: 'Naive UI: 一个组件库'
+    url: https://www.naiveui.com/zh-CN/light
+  - name: vitejs/vit
+    url: https://github.com/vitejs/vite
+  - name: Button 按钮 |
+    url: https://element-plus.gitee.io/zh-CN/component/button.html
+  - name: 管理后台接 ·
+    url: https://www.yuque.com/zhangyanneng/ind0b8/hg5elwg4e9uqozb2/edit
+  - name: 前端接口 · 语
+    url: https://www.yuque.com/zhangyanneng/ind0b8/nc0084fzliy3rrt3/edit
+- name: 软件下载
+  items:
+  - name: 精品MAC应用分
+    url: https://xclient.info/
+  - name: MSDN, 我告诉你 下
+    url: https://msdn.itellyou.cn/
+  - name: Get Ubuntu
+    url: https://ubuntu.com/download/server
+  - name: vscode插件库
+    url: https://marketplace.visualstudio.com/vscode
+  - name: SSH工具 客户端
+    url: http://www.hostbuf.com/
+  - name: Browsersyn中文网省时
+    url: http://www.browsersync.cn/
+  - name: TinyPNG – 压缩图片的
+    url: https://tinify.cn/
+  - name: BASE64转图片 - 站长
+    url: https://tool.jisuapi.com/base642pic.html
+  - name: 【抠图】在线抠_ps-
+    url: https://koutu.gaoding.com/
+  - name: 【在线PS软件】在PS（）_p
+    url: https://www.uupoop.com/
+- name: 项目
+  items:
+  - name: mall
+    url: http://www.macrozheng.com/#/
+  - name: 介绍 - litemal
+    url: https://linlinjava.gitbook.io/litemall/
+  - name: macrozheng项目是一套
+    url: https://github.com/macrozheng/mall
+  - name: MyBatis-Pl
+    url: https://mp.baomidou.com/
+  - name: mybatis – 入门
+    url: https://mybatis.org/mybatis-3/zh/getting-started.html
+  - name: JPA 实体管理器_w3csc
+    url: https://www.w3cschool.cn/java/jpa-entitymanager.html
+  - name: 微信小程序（openId、un
+    url: https://my.oschina.net/magicalSam/blog/832895
+  - name: 江湖工具箱-24.03.17-
+    url: https://www.golue.com/game/v1053900.html
+  - name: 项目禅-引流-----
+    url: https://xmc88.com/
+  - name: 大象副业-网-
+    url: https://pc.xiangmuchan.cn/
+  - name: 青豆云-多平
+    url: https://www.qdy.com/
