@@ -3,15 +3,15 @@
 - name: 分类
   sublinks:
     - name: 产品思维
-      url: /categories/product-thinking
+      url: /categories.html#产品思维
     - name: 设计与体验
-      url: /categories/design-experience
+      url: /categories.html#设计与体验
     - name: 技术纵横
-      url: /categories/technology
+      url: /categories.html#技术纵横
     - name: 运营增长
-      url: /categories/growth
+      url: /categories.html#运营增长
     - name: 漫谈与思考
-      url: /categories/thoughts
+      url: /categories.html#漫谈与思考
 - name: 网站导航
   url: /guide
 - name: 关于我

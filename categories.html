@@ -1,75 +1,124 @@
 ---
 layout: default
 title: 文章分类
-permalink: /categories/
+permalink: /categories.html
 ---
 
-<div class="categories-page">
-  <h1>文章分类</h1>
-  
-  <div class="categories-list">
-    {% assign categories_list = site.categories | sort %}
-    {% for category in categories_list %}
-      <div class="category-item">
-        <h2 id="{{ category[0] | slugify }}">
-          {{ category[0] }}
-          <span class="count">({{ category[1] | size }} 篇文章)</span>
-        </h2>
-        <ul class="posts-list">
-          {% assign posts_list = category[1] | sort: 'date' | reverse %}
-          {% for post in posts_list %}
-            <li>
-              <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-              <span class="post-meta">{{ post.date | date: "%Y-%m-%d" }}</span>
-            </li>
-          {% endfor %}
-        </ul>
+<div class="wrapper" style="margin-top: 40px">
+  <!-- 顶部：分类标题 -->
+  <div class="category-header" style="margin-bottom: 30px">
+    <h1
+      id="category-title"
+      class="section-title"
+      style="
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+        border-left: 5px solid var(--primary-color);
+        padding-left: 15px;
+      "
+    >
+      文章分类
+    </h1>
+  </div>
+  <div class="main-container">
+    <!-- 左侧：分类内容 -->
+    <div class="content-column">
+      <!-- 文章列表容器 -->
+      <div id="category-posts-container">
+        <div
+          class="loading"
+          style="text-align: center; padding: 40px; color: var(--text-light)"
+        >
+          加载中...
+        </div>
       </div>
-    {% endfor %}
+    </div>
+
+    <!-- 右侧：侧边栏 -->
+    <aside class="sidebar-column">
+      <!-- Categories Widget -->
+      {% include sidebar-categories.html %}
+
+      <!-- Tag Cloud Widget -->
+      {% include sidebar-tags.html %}
+    </aside>
   </div>
 </div>
 
 <style>
-  .categories-page {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-  .category-item {
-    margin-bottom: 40px;
-  }
-  .category-item h2 {
-    border-bottom: 2px solid #e0e0e0;
-    padding-bottom: 10px;
-    margin-bottom: 15px;
-  }
-  .count {
-    color: #666;
-    font-size: 0.8em;
-    font-weight: normal;
-  }
-  .posts-list {
-    list-style: none;
-    padding: 0;
-  }
-  .posts-list li {
-    padding: 8px 0;
-    border-bottom: 1px solid #f0f0f0;
-  }
-  .posts-list li:last-child {
-    border-bottom: none;
-  }
-  .posts-list a {
-    text-decoration: none;
-    color: #333;
-  }
-  .posts-list a:hover {
-    color: #007acc;
-  }
-  .post-meta {
-    color: #999;
-    font-size: 0.9em;
-    margin-left: 10px;
+  /* 列表为空时的提示 */
+  .empty-state {
+    text-align: center;
+    padding: 60px;
+    background: var(--white);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    color: var(--text-gray);
   }
 </style>
 
+<!-- 引入文章卡片渲染函数 -->
+{% include post-card-renderer.html %}
+
+<script>
+  // 1. 生成所有文章的 JSON 数据
+  const allPosts = [
+      {% for post in site.posts %}
+      {
+          title: {{ post.title | jsonify }},
+          url: "{{ post.url | relative_url }}",
+          date: "{{ post.date | date: '%Y-%m-%d' }}",
+          excerpt: {{ post.excerpt | strip_html | truncate: 120 | jsonify }},
+          cover: {% if post.cover %}"{{ post.cover | relative_url }}"{% else %}null{% endif %},
+          categories: {{ post.categories | jsonify }},
+          tags: {{ post.tags | jsonify }}
+      }{% unless forloop.last %},{% endunless %}
+      {% endfor %}
+  ];
+
+  // 2. 渲染文章列表函数
+  function renderPosts(category) {
+      const container = document.getElementById('category-posts-container');
+      const titleElement = document.getElementById('category-title');
+
+      // 处理默认情况
+      const targetCategory = (category && category !== 'all') ? category : null;
+
+      // 筛选文章
+      let filteredPosts = allPosts;
+      let displayTitle = '全部文章';
+
+      if (targetCategory) {
+          filteredPosts = allPosts.filter(post => post.categories && post.categories.includes(targetCategory));
+          displayTitle = `${targetCategory}`;
+      }
+
+      // 更新标题
+      titleElement.textContent = displayTitle;
+
+      // 生成 HTML
+      if (filteredPosts.length === 0) {
+          container.innerHTML = '<div class="empty-state">该分类下暂无文章</div>';
+          return;
+      }
+
+      const html = filteredPosts.map(post => {
+          // 使用复用的渲染函数，自动判断是否显示封面
+          return renderPostCard(post);
+      }).join('');
+
+      container.innerHTML = html;
+  }
+
+  // 3. 监听 Hash 变化
+  function handleHashChange() {
+      // 获取 hash，去掉 # 并解码 (处理中文)
+      const hash = decodeURIComponent(window.location.hash.substring(1));
+      // 如果没有 hash，或者 hash 为空，显示全部
+      renderPosts(hash || 'all');
+  }
+
+  // 初始化
+  window.addEventListener('hashchange', handleHashChange);
+  document.addEventListener('DOMContentLoaded', handleHashChange);
+</script>

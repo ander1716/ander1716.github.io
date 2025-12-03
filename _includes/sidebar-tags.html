@@ -1,0 +1,17 @@
+<!-- Tag Cloud Widget -->
+<div class="sidebar-widget">
+  <h4>热门标签</h4>
+  {% assign tags_list = site.tags | sort %} 
+  {% if tags_list.size > 0 %}
+  <div class="tag-cloud">
+    {% for tag in tags_list %} {% assign tag_name = tag[0] %}
+    <a href="{{ '/tags.html' | relative_url }}#{{ tag_name }}">
+      {{ tag_name }}
+    </a>
+    {% endfor %}
+  </div>
+  {% else %}
+  <p>暂无标签</p>
+  {% endif %}
+</div>
+

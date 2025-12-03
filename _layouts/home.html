@@ -129,42 +129,10 @@ layout: default
   <!-- Right Sidebar -->
   <aside class="sidebar-column">
     <!-- Categories Widget -->
-    <div class="sidebar-widget">
-      <h4>文章分类</h4>
-      {% assign categories_list = site.categories | sort %} {% if
-      categories_list.size > 0 %}
-      <ul class="category-list">
-        {% for category in categories_list %} {% assign category_name =
-        category[0] %} {% assign posts_in_category = category[1] %}
-        <li>
-          <a
-            href="{{ '/categories.html' | relative_url }}#{{ category_name | slugify }}"
-            >{{ category_name }}</a
-          >
-          <span class="count-badge">{{ posts_in_category | size }}</span>
-        </li>
-        {% endfor %}
-      </ul>
-      {% else %}
-      <p>暂无分类</p>
-      {% endif %}
-    </div>
+    {% include sidebar-categories.html %}
 
     <!-- Tag Cloud Widget -->
-    <div class="sidebar-widget">
-      <h4>热门标签</h4>
-      {% assign tags_list = site.tags | sort %} {% if tags_list.size > 0 %}
-      <div class="tag-cloud">
-        {% for tag in tags_list %} {% assign tag_name = tag[0] %}
-        <a href="{{ '/tags.html' | relative_url }}#{{ tag_name | slugify }}"
-          >{{ tag_name }}</a
-        >
-        {% endfor %}
-      </div>
-      {% else %}
-      <p>暂无标签</p>
-      {% endif %}
-    </div>
+    {% include sidebar-tags.html %}
 
     <!-- Hot Articles Widget -->
     <div class="sidebar-widget">

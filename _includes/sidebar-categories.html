@@ -1,0 +1,26 @@
+<!-- Categories Widget -->
+<div class="sidebar-widget">
+  <h4>文章分类</h4>
+  <ul class="category-list">
+    {% assign nav_categories = site.data.navigation | where: "name", "分类" | first %}
+    {% if nav_categories and nav_categories.sublinks %}
+      {% for link in nav_categories.sublinks %}
+        {% assign cat_name = link.name %}
+        <!-- 获取该分类下的文章数量 -->
+        {% assign posts_count = site.categories[cat_name].size %}
+        <li>
+          <a
+            href="{{ link.url | relative_url }}"
+            onclick="if(window.location.pathname.includes('/categories')){ setTimeout(function(){ window.dispatchEvent(new Event('hashchange')); }, 100) }"
+          >
+            {{ cat_name }}
+          </a>
+          <span class="count-badge">{{ posts_count | default: 0 }}</span>
+        </li>
+      {% endfor %}
+    {% else %}
+      <p>暂无分类配置</p>
+    {% endif %}
+  </ul>
+</div>
+

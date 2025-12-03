@@ -81,7 +81,7 @@
         position: relative;
         width: 100%;
         max-width: 700px;
-        margin: 100px auto 0;
+        margin: 80px auto 0;
         padding: 0 20px;
         z-index: 10000;
         transform: translateY(-20px);
@@ -112,15 +112,15 @@
       /* 搜索框样式重写 */
       .search-box-container .ais-SearchBox-form {
         background: white;
-        border-radius: 8px;
+        border-radius: 8px 8px 0 0;
         box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-        height: 60px;
+        height: 50px;
       }
 
       .search-box-container .ais-SearchBox-input {
         border: none;
-        font-size: 18px;
-        padding-left: 50px;
+        font-size: 16px;
+        padding-left: 45px;
         border-radius: 8px;
       }
 
@@ -133,27 +133,54 @@
         right: 15px;
       }
 
+      /* 覆盖 Algolia InstantSearch 默认样式 */
+      .ais-Hits-item,
+      .ais-InfiniteHits-item {
+        padding: 0 !important;
+        border-bottom: none !important;
+        line-height: normal !important;
+        box-shadow: none !important;
+        margin: 0 !important;
+      }
+
       /* 结果列表样式 */
       .search-hits-container {
-        margin-top: 20px;
+        margin-top: 1px;
         background: white;
-        border-radius: 8px;
-        max-height: calc(100vh - 200px);
+        border-radius: 0 0 10px 10px;
+        max-height: calc(100vh - 180px);
         overflow-y: auto;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
         display: none; /* 有结果时显示 */
+        padding: 8px 0;
       }
 
       .global-search-item {
-        padding: 20px;
-        border-bottom: 1px solid #eee;
-        transition: background 0.2s;
+        padding: 14px 24px;
+        border-bottom: 1px solid #f0f0f0;
+        transition: all 0.15s ease;
         display: block;
         text-decoration: none;
+        position: relative;
+      }
+
+      .global-search-item::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 0;
+        background: linear-gradient(to right, #3498db, transparent);
+        transition: width 0.2s ease;
       }
 
       .global-search-item:hover {
-        background: #f8f9fa;
+        background: #f5f9ff;
+      }
+
+      .global-search-item:hover::before {
+        width: 4px;
       }
 
       .global-search-item:last-child {
@@ -161,23 +188,34 @@
       }
 
       .hit-title {
-        font-size: 18px;
-        font-weight: 600;
-        color: #333;
-        margin-bottom: 8px;
+        font-size: 16px;
+        font-weight: 500;
+        color: #1a0dab;
+        margin-bottom: 6px;
         display: block;
+        transition: color 0.2s;
+        line-height: 1.4;
+      }
+
+      .global-search-item:hover .hit-title {
+        color: #1558d6;
+        text-decoration: underline;
+      }
+
+      .global-search-item:visited .hit-title {
+        color: #609;
       }
 
       .hit-title mark {
-        background: rgba(52, 152, 219, 0.2);
-        color: #2980b9;
-        padding: 0 2px;
-        border-radius: 2px;
+        background: none;
+        color: inherit;
+        padding: 0;
+        font-weight: 700;
       }
 
       .hit-content {
         font-size: 14px;
-        color: #666;
+        color: #545454;
         line-height: 1.6;
         margin: 0;
         display: -webkit-box;
@@ -185,19 +223,43 @@
         -webkit-box-orient: vertical;
         overflow: hidden;
       }
+      
+      .hit-content mark {
+        background: none;
+        color: inherit;
+        font-weight: 600;
+      }
 
       .hit-meta {
         font-size: 12px;
-        color: #999;
-        margin-top: 10px;
-        display: block;
+        color: #70757a;
+        margin-top: 6px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+      
+      .hit-meta::before {
+        content: '';
+        display: inline-block;
+        width: 14px;
+        height: 14px;
+        background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%2370757a' stroke-width='2'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpolyline points='12 6 12 12 16 14'/%3E%3C/svg%3E") center/contain no-repeat;
       }
 
       .no-results {
-        padding: 30px;
+        padding: 40px;
         text-align: center;
-        color: #666;
-        font-size: 16px;
+        color: #70757a;
+        font-size: 14px;
+      }
+      
+      .no-results::before {
+        content: '🔍';
+        display: block;
+        font-size: 48px;
+        margin-bottom: 16px;
+        opacity: 0.3;
       }
     </style>
 
@@ -392,10 +454,6 @@
                     <span class="hit-title">
                       ${components.Highlight({ hit, attribute: 'title' })}
                     </span>
-                    <p class="hit-content">
-                      ${components.Snippet({ hit, attribute: 'content' })}
-                    </p>
-                    <span class="hit-meta">${hit.date}</span>
                   </a>
                 `;
               },
