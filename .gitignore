@@ -4,3 +4,4 @@ _site
 .jekyll-metadata
 vendor
 .venv
+upload_to_algolia_by_requrst.py
