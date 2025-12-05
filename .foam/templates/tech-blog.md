@@ -11,14 +11,10 @@ date: ${FOAM_DATE_YEAR}-${FOAM_DATE_MONTH}-${FOAM_DATE_DATE}
 last_modified_at: ${FOAM_DATE_YEAR}-${FOAM_DATE_MONTH}-${FOAM_DATE_DATE}
 categories: [产品思维、设计与体验、技术纵横, 运营增长, 漫谈与思考]
 tags: [前端]
+cover: https://qiniu.zhuyucun.cn/uploads/1764853276621_kn1jl7.jpg
 excerpt: >
   用一两句话说清楚这篇文章在解决什么问题、为谁而写。
 ---
-
-## TL;DR
-- 背景：
-- 关键方案：
-- 最终效果：
 
 ## 背景与问题
 - 痛点 / 需求：

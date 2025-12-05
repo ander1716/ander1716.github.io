@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{% if page.title %}{{ page.title }} - {% endif %}z-blog</title>
     <link rel="stylesheet" href="{{ '/assets/css/home.css' | relative_url }}" />
+    <link rel="icon" type="image/png" href="https://qiniu.zhuyucun.cn/uploads/1764903456608_pfm3mt.jpg" />
     <style>
       /* 搜索按钮样式 */
       .search-btn {
@@ -13,23 +14,19 @@
         cursor: pointer;
         padding: 8px;
         border-radius: 50%;
-        color: #666;
+        color: var(--text-gray);
         transition: all 0.2s ease;
         display: flex;
         align-items: center;
         justify-content: center;
-        margin-right: 0; /* 与导航链接的间距 */
+        width: 36px;
+        height: 36px;
       }
 
       .search-btn:hover {
-        background-color: rgba(0, 0, 0, 0.05);
-        color: #3498db; /* 悬停时变为主题色 */
+        background-color: rgba(47, 191, 160, 0.1);
+        color: var(--primary-color);
         transform: scale(1.1);
-      }
-      
-      .site-nav {
-        display: flex;
-        align-items: center;
       }
     </style>
   </head>
@@ -156,27 +153,18 @@
       }
 
       .global-search-item {
-        padding: 14px 24px;
+        padding: 3px 24px;
         border-bottom: 1px solid #f0f0f0;
         transition: all 0.15s ease;
         display: block;
         text-decoration: none;
         position: relative;
-      }
-
-      .global-search-item::before {
-        content: '';
-        position: absolute;
-        left: 0;
-        top: 0;
-        bottom: 0;
-        width: 0;
-        background: linear-gradient(to right, #3498db, transparent);
-        transition: width 0.2s ease;
+        flex: 1;
+        color: #000 !important;
       }
 
       .global-search-item:hover {
-        background: #f5f9ff;
+        background: #eff0f3;
       }
 
       .global-search-item:hover::before {
@@ -203,7 +191,7 @@
       }
 
       .global-search-item:visited .hit-title {
-        color: #609;
+        color: rgb(58, 58, 58);
       }
 
       .hit-title mark {
@@ -266,18 +254,14 @@
     <!-- Header -->
     <header class="site-header">
       <div class="wrapper header-inner">
+        <!-- Logo -->
         <a href="{{ '/' | relative_url }}" class="site-title">
-          <span class="logo-circle">zyc</span>
-          z-blog
+          <img src="https://qiniu.zhuyucun.cn/uploads/1764903456608_pfm3mt.jpg" alt="logo" class="logo-circle">
+          <span class="site-title-text">z-blog</span>
         </a>
-        <nav class="site-nav">
-          <!-- 搜索按钮 -->
-          <button type="button" class="search-btn" aria-label="Search">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="11" cy="11" r="8"></circle>
-              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-            </svg>
-          </button>
+        
+        <!-- Desktop Navigation -->
+        <nav class="site-nav desktop-nav">
           {% for item in site.data.navigation %} {% if item.sublinks %}
           <!-- Dropdown menu for categories -->
           <div class="nav-dropdown">
@@ -294,8 +278,45 @@
           <!-- Regular navigation link -->
           <a href="{{ item.url | relative_url }}">{{ item.name }}</a>
           {% endif %} {% endfor %}
+          
+          <!-- Search Button -->
+          <button type="button" class="search-btn" aria-label="Search">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </button>
         </nav>
+
+        <!-- Right Side Actions (Mobile Only) -->
+        <div class="header-actions">
+          <!-- Mobile Menu Toggle -->
+          <button type="button" class="mobile-menu-toggle" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
       </div>
+      
+      <!-- Mobile Navigation -->
+      <nav class="site-nav mobile-nav">
+        {% for item in site.data.navigation %} {% if item.sublinks %}
+        <div class="nav-dropdown mobile-dropdown">
+          <button type="button" class="nav-dropdown-toggle mobile-dropdown-toggle">
+            {{ item.name }}
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="nav-dropdown-menu mobile-dropdown-menu">
+            {% for sublink in item.sublinks %}
+            <a href="{{ sublink.url | relative_url }}">{{ sublink.name }}</a>
+            {% endfor %}
+          </div>
+        </div>
+        {% else %}
+        <a href="{{ item.url | relative_url }}">{{ item.name }}</a>
+        {% endif %} {% endfor %}
+      </nav>
     </header>
 
     <!-- Main Content Area -->
@@ -375,6 +396,40 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/instantsearch.js/4.80.0/instantsearch.production.min.js"></script>
     <script>
       document.addEventListener('DOMContentLoaded', function() {
+        // 0. 移动端菜单控制
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const mobileNav = document.querySelector('.site-nav.mobile-nav');
+        const mobileDropdowns = document.querySelectorAll('.mobile-dropdown');
+        
+        if (mobileMenuToggle && mobileNav) {
+          mobileMenuToggle.addEventListener('click', function() {
+            mobileMenuToggle.classList.toggle('active');
+            mobileNav.classList.toggle('active');
+            document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
+          });
+          
+          // 点击菜单外区域关闭菜单
+          document.addEventListener('click', function(e) {
+            if (mobileNav.classList.contains('active') && 
+                !mobileNav.contains(e.target) && 
+                !mobileMenuToggle.contains(e.target)) {
+              mobileMenuToggle.classList.remove('active');
+              mobileNav.classList.remove('active');
+              document.body.style.overflow = '';
+            }
+          });
+        }
+        
+        // 移动端下拉菜单控制
+        mobileDropdowns.forEach(dropdown => {
+          const toggle = dropdown.querySelector('.mobile-dropdown-toggle');
+          if (toggle) {
+            toggle.addEventListener('click', function() {
+              dropdown.classList.toggle('active');
+            });
+          }
+        });
+        
         // 1. 浮窗控制逻辑
         const searchOverlay = document.getElementById('search-overlay');
         const openSearchBtn = document.querySelector('.search-btn');
@@ -383,6 +438,13 @@
         const hitsContainer = document.getElementById('global-hits-container');
 
         function openSearch() {
+          // 关闭移动端菜单（如果打开）
+          if (mobileNav && mobileNav.classList.contains('active')) {
+            mobileMenuToggle.classList.remove('active');
+            mobileNav.classList.remove('active');
+            document.body.style.overflow = '';
+          }
+          
           searchOverlay.classList.add('active'); // 使用 active 类控制动画
           // 延时聚焦输入框
           setTimeout(() => {
@@ -414,6 +476,29 @@
         document.addEventListener('keydown', function(e) {
           if (e.key === 'Escape' && searchOverlay.classList.contains('active')) {
             closeSearch();
+          }
+        });
+
+        // Command+K (Mac) 或 Ctrl+K (Windows/Linux) 打开搜索
+        document.addEventListener('keydown', function(e) {
+          // 检查是否按下了 Command+K (Mac) 或 Ctrl+K (Windows/Linux)
+          // 同时确保不在输入框中（避免与输入框快捷键冲突）
+          const isInputFocused = document.activeElement.tagName === 'INPUT' || 
+                                 document.activeElement.tagName === 'TEXTAREA' ||
+                                 document.activeElement.isContentEditable;
+          
+          // 如果搜索弹窗已打开，且焦点在搜索输入框，则不处理（让用户正常输入）
+          if (searchOverlay.classList.contains('active') && isInputFocused) {
+            return;
+          }
+          
+          if ((e.metaKey || e.ctrlKey) && (e.key === 'k' || e.key === 'K')) {
+            e.preventDefault(); // 阻止浏览器默认行为
+            if (searchOverlay.classList.contains('active')) {
+              closeSearch();
+            } else {
+              openSearch();
+            }
           }
         });
 

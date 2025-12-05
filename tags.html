@@ -91,7 +91,7 @@ permalink: /tags.html
           // 筛选包含该标签的文章
           filteredPosts = allPosts.filter(post => post.tags && post.tags.includes(targetTag));
           displayTitle = `#${targetTag}`;
-      }
+  }
 
       // 更新标题
       titleElement.textContent = displayTitle;
@@ -100,7 +100,7 @@ permalink: /tags.html
       if (filteredPosts.length === 0) {
           container.innerHTML = '<div class="empty-state">该标签下暂无文章</div>';
           return;
-      }
+  }
 
       const html = filteredPosts.map(post => {
           // 使用复用的渲染函数，强制不显示封面

@@ -3,22 +3,28 @@ description: 常用网站导航
 links:
 - name: AI
   items:
-  - name: Copilot
-    url: https://copilot.microsoft.com/
-  - name: ChatGPT
-    url: https://chatgpt.com/
-  - name: Gemini
-    url: https://gemini.google.com/app
-  - name: 文心一言
-    url: https://yiyan.baidu.com/
+  - name: DeepSeek
+    url: https://chat.deepseek.com/
   - name: 通义千问
     url: https://tongyi.aliyun.com/qianwen/
+  - name: 千问
+    url: https://www.qianwen.com/
+  - name: 豆包
+    url: https://www.doubao.com/chat
+  - name: 百度ai
+    url: https://chat.baidu.com/search
+  - name: 文心一言
+    url: https://yiyan.baidu.com/
+  - name: ChatGPT
+    url: https://chatgpt.com/
+  - name: Copilot
+    url: https://copilot.microsoft.com/
   - name: Kimi
-    url: https://kimi.moonshot.cn/?utm_campaign=TR_KCTflHiP&utm_content=&utm_medium=%E7%BD%91%E7%AB%99&utm_source=CH_tfR6QSUQ&utm_term=
-  - name: 提示工程
-    url: https://platform.openai.com/docs/guides/prompt-engineering
-  - name: AI全栈
-    url: https://agiclass.feishu.cn/wiki/EztTwL9wniRVXXkW8itcvdyFnhc
+    url: https://kimi.moonshot.cn/
+  - name: Chatly
+    url: https://chatlyai.app/
+  - name: OpenAI Platform
+    url: https://platform.openai.com/docs/overview
   - name: Transformers
     url: https://huggingface.co/docs/transformers.js/main/en/index
   - name: DevAGI
@@ -37,26 +43,18 @@ links:
     url: https://cloud.siliconflow.cn/models
   - name: Grok
     url: https://grok.com/?referrer=website
-  - name: DeepSeek
-    url: https://chat.deepseek.com/
-  - name: AI搜索
-    url: https://chat.baidu.com/search?isShowHello=1&pd=csaitab&setype=csaitab&extParamsJson=%7B%22enter_type%22%3A%22ai_explore_home%22%7D&usedModel=%7B%22modelName%22%3A%22DeepSeek-R1%22%7D
+  - name: Gemini
+    url: https://gemini.google.com/app
   - name: 直答
     url: https://zhida.zhihu.com/
   - name: Claude学园
     url: https://academy.claude-code.club/
   - name: 闪AI
     url: https://shanjian-openapi.apifox.cn/
-  - name: Claude客
+  - name: claude-code 
     url: https://customer.claude-code.club/dashboard?tab=statistics
   - name: 智谱AI
     url: https://bigmodel.cn/
-  - name: 豆包
-    url: https://www.doubao.com/chat
-  - name: 千问Qwen
-    url: https://www.qianwen.com/?source=baidu_brandzone
-  - name: Chatly
-    url: https://chatlyai.app/chat/6fe2f67b-dd91-403b-8b74-a1fb897e35f6?utm_model=vgpt-g3-0p
 - name: H5+CSS3
   items:
   - name: canvas API蚂蚁部落
@@ -161,8 +159,6 @@ links:
     url: https://blog.csdn.net/qq1195566313/category_11844396.html
   - name: chnirt/nes
     url: https://github.com/chnirt/nestjs-graphql-best-practice
-- name: node-up
-  items:
   - name: koa中间件集锦
     url: https://github.com/koajs/koa/wiki
   - name: vnshop10/s
@@ -199,74 +195,6 @@ links:
     url: https://www.shiyanlou.com/questions/102676/?utm_source=baidu&utm_medium=cpc&utm_campaign=python&utm_term=keywords
   - name: Python 基础教程 | 菜
     url: https://www.runoob.com/python/python-tutorial.html
-- name: 书签栏
-  items:
-  - name: LTE无线路由器
-    url: http://192.168.1.1/index.html
-- name: 前端学习
-  items:
-  - name: 前端45期学员
-    url: https://duyiedu.yuque.com/fmi7t1/nwhh7g/ss9nl96a3pz7ntv9?singleDoc=
-  - name: 开始 – React
-    url: https://zh-hans.legacy.reactjs.org/docs/getting-started.html
-  - name: Describing
-    url: https://18.react.dev/learn/describing-the-ui
-  - name: React Rout
-    url: https://reactrouter.com/home
-  - name: Vue.js - 渐进式 框架
-    url: https://cn.vuejs.org/
-- name: 前端实现
-  items:
-  - name: JavaScript实现图片裁
-    url: http://www.ibooker.cc/article/43/detail
-  - name: 【前端】图片裁（）Jcrop
-    url: https://www.jianshu.com/p/8255de62a78a
-  - name: 内功修炼之lodash——fu
-    url: https://cloud.tencent.com/developer/article/1532427
-  - name: ECMAScript
-    url: http://www.ecma-international.org/ecma-262/6.0/
-- name: 前端统筹管
-  items:
-  - name: 【转载】前端项 - CSDN
-    url: https://blog.csdn.net/hicoldcat/article/details/53995337
-  - name: 前端技术选 --- - joy
-    url: https://www.cnblogs.com/ycxqdkf/p/7732807.html
-  - name: Gulp 自动化你的 |
-    url: https://www.sheyilin.com/2016/02/gulp_introduce/
-  - name: rollup.js 中文文档中
-    url: https://www.rollupjs.com/guide/zh
-  - name: 公司技术选 -
-    url: http://naotu.baidu.com/file/dc7387bbd1bec86fba8e91c87511b222
-  - name: 公司技术选 -
-    url: http://defxa.favopen.com/Baidu0312
-  - name: 03 | 复杂度分析（）：、？
-    url: https://time.geekbang.org/column/article/40036
-  - name: 一步一步搭：？ -
-    url: https://www.jianshu.com/p/c4549c28c64f
-  - name: (1条消息)服务_-CSDN
-    url: https://blog.csdn.net/woleigequshawanyier/article/details/86370471
-  - name: 微信支付 - 中 ｜
-    url: https://pay.weixin.qq.com/index.php/core/home/login?return_url=%2F
-  - name: 【转载】前端项 - CSDN
-    url: https://blog.csdn.net/hicoldcat/article/details/53995337
-  - name: 前端技术选 --- - joy
-    url: https://www.cnblogs.com/ycxqdkf/p/7732807.html
-  - name: Gulp 自动化你的 |
-    url: https://www.sheyilin.com/2016/02/gulp_introduce/
-  - name: rollup.js 中文文档中
-    url: https://www.rollupjs.com/guide/zh
-  - name: 公司技术选 -
-    url: http://naotu.baidu.com/file/dc7387bbd1bec86fba8e91c87511b222
-  - name: 公司技术选 -
-    url: http://defxa.favopen.com/Baidu0312
-  - name: 03 | 复杂度分析（）：、？
-    url: https://time.geekbang.org/column/article/40036
-  - name: 一步一步搭：？ -
-    url: https://www.jianshu.com/p/c4549c28c64f
-  - name: 商品添加
-    url: http://192.168.0.115:8080/#/commodity/add
-  - name: (1条消息)服务_-CSDN
-    url: https://blog.csdn.net/woleigequshawanyier/article/details/86370471
 - name: 各种规范
   items:
   - name: CommonJS S
@@ -435,40 +363,6 @@ links:
     url: https://leetcode-cn.com/
   - name: 酷狗音乐wap端API -
     url: https://segmentfault.com/a/1190000010222913#articleHeader1
-- name: 瑞利恩
-  items:
-  - name: 运营端
-    url: https://js.design/f/CCj9fZ?p=Vd-uxezIoN&mode=programmer
-  - name: 教师端
-    url: https://js.design/f/D0F9IF?p=KvkIZiwyuu&mode=design
-  - name: 企业端
-    url: https://js.design/f/94wnaM?p=WMkabl-RJo&mode=design
-  - name: ​产教融合平台
-    url: https://u1eph6dxqt4.feishu.cn/docx/I9r2dnFgVouIOjxwZNicoNRwnHc
-  - name: 产教融合运-
-    url: https://lanhuapp.com/web/#/item/project/stage?tid=497377ad-c05f-4c98-8706-068c6fc85385&pid=216f5b8b-0e47-4ba8-b5d2-de82012cf567
-  - name: 可视化表格 VTable de
-    url: https://visactor.io/vtable/example
-  - name: 产教融合平台
-    url: https://u1eph6dxqt4.feishu.cn/docx/I9r2dnFgVouIOjxwZNicoNRwnHc?blockId=Ox3tdFQPRodZfkxgVA2caNaenhh&blockToken=XSRIwBr3UhHvDhbuRoLcCF8Tndb&blockType=whiteboard&doc_app_id=501
-  - name: FuAdmin/fu采用当前最
-    url: https://github.com/FuAdmin/fu-admin
-  - name: NinjaAPI
-    url: http://47.109.95.174:9527/api/docs
-  - name: NinjaAPI 正式环境服
-    url: http://36.134.25.19:9527/api/docs
-  - name: 原型演示 - 蓝
-    url: https://lanhuapp.com/web/#/item/project/protoDetach/edit/entry?sId=2f642c47-f966-4c67-a90b-afdc3a5a2b3d&pid=216f5b8b-0e47-4ba8-b5d2-de82012cf567&type=web
-  - name: DeepSeek -探索未至之
-    url: https://chat.deepseek.com/a/chat/s/6ec5f9c5-3121-48fc-a311-556d259c6001
-  - name: 宝塔Linux面板
-    url: https://36.134.25.19:28751/files
-  - name: "‌\uFEFF⁢​⁤‍⁢⁡‍‌各项目标签"
-    url: https://shujufuwubu.feishu.cn/wiki/KJo8wF936iRLpCkgdrfcaUbjnve
-  - name: 首页 - 产教融
-    url: http://36.134.25.19:3000/#/analysis
-  - name: 项目评价
-    url: https://doc.apipost.net/docs/detail/466f09a7707c000?target_id=26df6676bfe004
 - name: 电子书
   items:
   - name: Flutter实战·第二版

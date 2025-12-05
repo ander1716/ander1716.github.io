@@ -91,7 +91,7 @@ permalink: /categories.html
       if (targetCategory) {
           filteredPosts = allPosts.filter(post => post.categories && post.categories.includes(targetCategory));
           displayTitle = `${targetCategory}`;
-      }
+  }
 
       // 更新标题
       titleElement.textContent = displayTitle;
@@ -100,7 +100,7 @@ permalink: /categories.html
       if (filteredPosts.length === 0) {
           container.innerHTML = '<div class="empty-state">该分类下暂无文章</div>';
           return;
-      }
+  }
 
       const html = filteredPosts.map(post => {
           // 使用复用的渲染函数，自动判断是否显示封面

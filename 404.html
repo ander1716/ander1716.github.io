@@ -1,25 +1,154 @@
 ---
 permalink: /404.html
-layout: page
+layout: default
+title: 页面未找到
 ---
 
-<style type="text/css" media="screen">
-  .container {
-    margin: 10px auto;
-    max-width: 600px;
-    text-align: center;
+<div class="not-found-wrapper">
+  <div class="not-found-content">
+    <div class="svg-container">
+      <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" class="not-found-svg">
+        <!-- 背景圆圈 -->
+        <circle cx="200" cy="150" r="130" fill="#f0f7ff" opacity="0.5" />
+        <circle cx="50" cy="80" r="15" fill="#e1efff" opacity="0.6" />
+        <circle cx="350" cy="220" r="25" fill="#e1efff" opacity="0.6" />
+        <circle cx="320" cy="50" r="10" fill="#e1efff" opacity="0.6" />
+        
+        <!-- 404 文字背景 -->
+        <text x="200" y="280" font-family="Arial, sans-serif" font-size="140" font-weight="bold" fill="#e1efff" text-anchor="middle" opacity="0.4">404</text>
+        
+        <!-- 宇航员/星球插图 -->
+        <g transform="translate(130, 70)">
+           <!-- 星球本体 -->
+           <circle cx="70" cy="70" r="60" fill="#3498db" />
+           <circle cx="70" cy="70" r="50" fill="#2980b9" opacity="0.3" transform="translate(-10, -10)" />
+           
+           <!-- 环 -->
+           <ellipse cx="70" cy="70" rx="90" ry="25" fill="none" stroke="#bdc3c7" stroke-width="8" stroke-opacity="0.6" transform="rotate(-20 70 70)" />
+           <ellipse cx="70" cy="70" rx="90" ry="25" fill="none" stroke="#fff" stroke-width="2" stroke-dasharray="10, 15" transform="rotate(-20 70 70)" />
+           
+           <!-- 陨石坑细节 -->
+           <circle cx="50" cy="50" r="8" fill="#2573a7" opacity="0.4" />
+           <circle cx="90" cy="80" r="12" fill="#2573a7" opacity="0.4" />
+           <circle cx="60" cy="100" r="5" fill="#2573a7" opacity="0.4" />
+        </g>
+        
+        <!-- 漂浮的元素 -->
+        <g class="floating-item" style="animation-delay: 1s;">
+            <rect x="80" y="180" width="20" height="20" rx="4" fill="#95a5a6" opacity="0.6" transform="rotate(15)" />
+        </g>
+        <g class="floating-item" style="animation-delay: 2s;">
+            <polygon points="300,100 310,120 290,120" fill="#f1c40f" opacity="0.6" transform="rotate(-15)" />
+        </g>
+      </svg>
+    </div>
+    
+    <h1 class="not-found-title">404</h1>
+    <p class="not-found-desc">抱歉，您访问的页面似乎迷失在太空中了...</p>
+    
+    <div class="action-buttons">
+      <a href="/" class="back-home-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+        返回首页
+      </a>
+    </div>
+  </div>
+</div>
+
+<style>
+  .not-found-wrapper {
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    background: linear-gradient(to bottom, #fff, #f9fbfd);
   }
-  h1 {
-    margin: 30px 0;
-    font-size: 4em;
-    line-height: 1;
+
+  .not-found-content {
+    text-align: center;
+    max-width: 600px;
+    width: 100%;
+  }
+
+  .svg-container {
+    margin: 0 auto 20px;
+    max-width: 400px;
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .not-found-svg {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  .floating-item {
+    animation: float-small 4s ease-in-out infinite;
+  }
+
+  .not-found-title {
+    font-size: 2.5rem;
+    color: var(--text-dark, #2c3e50);
+    margin: 0 0 15px;
+    font-weight: 700;
     letter-spacing: -1px;
   }
+
+  .not-found-desc {
+    font-size: 1.1rem;
+    color: var(--text-gray, #7f8c8d);
+    margin-bottom: 35px;
+    line-height: 1.6;
+  }
+
+  .back-home-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 32px;
+    background: var(--primary-color, #3498db);
+    color: white;
+    border-radius: 50px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+  }
+
+  .back-home-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(52, 152, 219, 0.4);
+    color: white;
+  }
+  
+  .back-home-btn svg {
+    transition: transform 0.3s ease;
+  }
+  
+  .back-home-btn:hover svg {
+    transform: scale(1.1);
+  }
+
+  @keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0px); }
+  }
+  
+  @keyframes float-small {
+    0% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-8px) rotate(5deg); }
+    100% { transform: translateY(0px) rotate(0deg); }
+  }
+  
+  /* 响应式调整 */
+  @media (max-width: 600px) {
+    .not-found-title {
+      font-size: 2rem;
+    }
+    .svg-container {
+      max-width: 300px;
+    }
+  }
 </style>
-
-<div class="container">
-  <h1>404</h1>
-
-  <p><strong>Page not found :(</strong></p>
-  <p>The requested page could not be found.</p>
-</div>
