@@ -1,10 +1,8 @@
 <script>
 /**
- * 渲染文章卡片的通用函数
+ * 渲染文章卡片 (仿掘金风格)
  * @param {Object} post - 文章对象
  * @param {Object} options - 配置选项
- * @param {boolean} options.showCover - 是否显示封面图（默认：根据文章是否有封面自动判断）
- * @param {boolean} options.forceNoCover - 强制不显示封面图（默认：false）
  * @returns {string} 文章卡片的 HTML 字符串
  */
 function renderPostCard(post, options = {}) {
@@ -12,60 +10,39 @@ function renderPostCard(post, options = {}) {
     
     // 判断是否显示封面
     const hasCover = !forceNoCover && (showCover !== null ? showCover : !!post.cover);
-    const cardClass = hasCover ? 'post-card featured' : 'post-card';
-    
-    // 分类标签 HTML
-    const categoryHtml = post.categories && post.categories.length > 0
-        ? `<span class="category-tag">${post.categories[0]}</span>`
-        : '';
     
     // 标签列表 HTML
     const tagsHtml = post.tags && post.tags.length > 0
-        ? `<div class="post-tags-list">
-            ${post.tags.map(tag => `<span class="tag-pill">${tag}</span>`).join('')}
+        ? `<div class="juejin-tags">
+            ${post.tags.map(tag => `<span class="juejin-tag">${tag}</span>`).join('')}
            </div>`
         : '';
     
-    // 封面图区域 HTML
-    const imageHtml = hasCover
-        ? `<div class="featured-image">
+    // 封面图 HTML
+    const coverHtml = hasCover
+        ? `<div class="juejin-cover">
              <img src="${post.cover}" alt="${post.title}" loading="lazy" />
            </div>`
         : '';
+        
+    // 随机生成一些模拟数据 (为了更像掘金)
+    // 注意：实际项目中应该使用真实数据
+    const views = Math.floor(Math.random() * 2000) + 100;
     
-    // 根据是否有封面，生成不同的 HTML 结构
-    if (hasCover) {
-        return `
-        <article class="${cardClass}">
-            ${imageHtml}
-            <div class="featured-content">
-                <div class="post-meta-tags">
-                    ${categoryHtml}
-                    <span class="date-meta">${post.date}</span>
-                </div>
+    return `
+    <article class="juejin-card">
+        <div class="juejin-content">
+            <div class="juejin-header">
                 <h3><a href="${post.url}">${post.title}</a></h3>
-                <p class="post-excerpt">${post.excerpt}</p>
+            </div>
+            <p class="juejin-excerpt">${post.excerpt}</p>
+            <div class="juejin-footer">
                 ${tagsHtml}
-                <a href="${post.url}" class="read-more">阅读全文 →</a>
             </div>
-        </article>
-        `;
-    } else {
-        return `
-        <article class="${cardClass}">
-            <div class="post-meta-tags">
-                ${categoryHtml}
-                <span class="date-meta">${post.date}</span>
-            </div>
-            <h3><a href="${post.url}">${post.title}</a></h3>
-            <p class="post-excerpt">${post.excerpt}</p>
-            <div class="post-footer">
-                ${tagsHtml}
-                <a href="${post.url}" class="read-more">阅读全文 →</a>
-            </div>
-        </article>
-        `;
-    }
+        </div>
+        ${coverHtml}
+    </article>
+    `;
 }
 </script>
 

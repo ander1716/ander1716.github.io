@@ -2,6 +2,13 @@
 .post-layout {
   min-height: calc(100vh - 70px);
   padding: 40px 0 60px;
+  position: relative;
+}
+
+.post-layout-grid {
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
 }
 
 .post-container {
@@ -11,6 +18,121 @@
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-md); */
   overflow: hidden;
+}
+
+/* Table of Contents */
+.post-toc {
+  position: fixed;
+  left: calc((100vw - 800px) / 2 - 280px);
+  top: 100px;
+  width: 250px;
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
+  padding: 0;
+  z-index: 10;
+}
+
+/* 当屏幕太窄时隐藏目录 */
+@media (max-width: 1340px) {
+  .post-toc {
+    left: 20px;
+  }
+}
+
+.toc-wrapper {
+  background: white;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  box-shadow: var(--shadow-sm);
+}
+
+.toc-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin: 0 0 16px 0;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--border-color);
+}
+
+.toc-title svg {
+  color: var(--primary-color);
+}
+
+.toc-nav {
+  font-size: 0.9rem;
+}
+
+.toc-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.toc-list .toc-list {
+  margin-top: 4px;
+}
+
+.toc-item {
+  margin: 4px 0;
+}
+
+.toc-link {
+  display: block;
+  padding: 6px 12px;
+  color: var(--text-gray);
+  text-decoration: none;
+  border-radius: 6px;
+  transition: all 0.2s;
+  line-height: 1.5;
+  border-left: 3px solid transparent;
+}
+
+.toc-link:hover {
+  background: rgba(47, 191, 160, 0.1);
+  color: var(--primary-color);
+  border-left-color: var(--primary-color);
+  transform: translateX(2px);
+}
+
+.toc-link.active {
+  background: rgba(47, 191, 160, 0.15);
+  color: var(--primary-color);
+  font-weight: 600;
+  border-left-color: var(--primary-color);
+}
+
+.toc-level-1 .toc-link {
+  font-weight: 600;
+}
+
+.toc-level-3 .toc-link,
+.toc-level-4 .toc-link {
+  font-size: 0.85em;
+  padding: 4px 10px;
+}
+
+/* 滚动条美化 */
+.post-toc::-webkit-scrollbar {
+  width: 6px;
+}
+
+.post-toc::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+.post-toc::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 3px;
+}
+
+.post-toc::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-color);
 }
 
 /* Post Header */
@@ -514,6 +636,13 @@
 }
 
 /* Responsive Design */
+@media (max-width: 1140px) {
+  /* 屏幕宽度不足以显示侧边目录时隐藏 */
+  .post-toc {
+    display: none;
+  }
+}
+
 @media (max-width: 768px) {
   .post-layout {
     padding: 20px 0 40px;

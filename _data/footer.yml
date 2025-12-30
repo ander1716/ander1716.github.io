@@ -1,8 +1,8 @@
 # 底部数据配置
 about:
-  title: 关于 z-blog
+  title: 关于网站
   description: >
-    z-blog 是一个有深度分享、设计和产品思考的个人博客，在这里汇聚技术与设计的视角。
+    这是一个个人笔记、博文、技术分享和输出的空间。
 
 useful_links:
   title: 友情链接
@@ -29,22 +29,16 @@ quick_links:
       url: /about.html
 
 follow_us:
-  title: 关注我
+  title: 关于我
   socials:
     - icon: icon-github
       name: Github
-      url: "#"
+      url: "https://github.com/ander1716"
     - icon: icon-email
       name: 邮箱
-      url: "#"
-    - icon: icon-wechat
-      name: 微信
-      url: "#"
-    - icon: icon-feishu
-      name: 飞书
-      url: "#"
+      url: "mailto:ander.fe.zone@gmail.com"
   description: |
-    订阅我，获取技术、设计和工作笔记
+    你看～ 你看～ 月亮的脸偷偷的在改变！
 
 copyright:
   text: "© 2025 zhuyucun 版权所有"

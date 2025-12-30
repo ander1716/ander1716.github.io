@@ -33,15 +33,12 @@ permalink: /categories.html
         </div>
       </div>
     </div>
-
     <!-- 右侧：侧边栏 -->
     <aside class="sidebar-column">
-      <!-- Categories Widget -->
-      {% include sidebar-categories.html %}
-
       <!-- Tag Cloud Widget -->
       {% include sidebar-tags.html %}
     </aside>
+
   </div>
 </div>
 
@@ -58,6 +55,7 @@ permalink: /categories.html
 </style>
 
 <!-- 引入文章卡片渲染函数 -->
+
 {% include post-card-renderer.html %}
 
 <script>
@@ -100,7 +98,7 @@ permalink: /categories.html
       if (filteredPosts.length === 0) {
           container.innerHTML = '<div class="empty-state">该分类下暂无文章</div>';
           return;
-  }
+      }
 
       const html = filteredPosts.map(post => {
           // 使用复用的渲染函数，自动判断是否显示封面

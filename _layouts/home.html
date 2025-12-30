@@ -10,145 +10,59 @@ layout: default
   </div>
 </section>
 
-<!-- Main Layout -->
-<div class="wrapper main-container">
-  <!-- Left Content -->
-  <main class="content-column">
-    {% assign featured_post = site.posts | first %} {% if featured_post %}
+<!-- Main Layout replaced with Thinking Domains -->
+<div class="wrapper thinking-domains-wrapper">
+  <div class="thinking-domains-section">
+    <div class="domains-grid">
+      <!-- Card 1: Product Thinking -->
+      <div class="domain-card">
+        <div class="domain-icon-wrapper icon-blue">
+          <span class="domain-icon">💡</span>
+        </div>
+        <h3>产品思维</h3>
+        <p>深入探讨产品方法论、用户需求分析与商业价值创造，分享从0到1打造产品的思考过程。</p>
+        <a href="{{ '/categories.html#产品思维' | relative_url }}" class="read-more">阅读更多 →</a>
+      </div>
 
-    <!-- Featured Post -->
-    <article class="post-card featured">
-      <div class="featured-image">
-        {% if featured_post.cover %}
-        <img
-          src="{{ featured_post.cover | relative_url }}"
-          alt="{{ featured_post.title }}"
-        />
-        {% else %}
-        <div class="img-placeholder">
-          <span style="font-size: 3rem">🖼️</span>
+      <!-- Card 2: Design & Experience -->
+      <div class="domain-card">
+        <div class="domain-icon-wrapper icon-green">
+          <span class="domain-icon">🖋️</span>
         </div>
-        {% endif %}
+        <h3>设计与体验</h3>
+        <p>探索交互设计、视觉美学与用户体验的奥秘，分享提升产品体验的实用技巧与案例。</p>
+        <a href="{{ '/categories.html#设计与体验' | relative_url }}" class="read-more">阅读更多 →</a>
       </div>
-      <div class="featured-content">
-        <div class="post-meta-tags">
-          {% if featured_post.categories.size > 0 %}
-          <span class="category-tag"
-            >{{ featured_post.categories | first }}</span
-          >
-          {% endif %}
-          <span class="date-meta"
-            >{{ featured_post.date | date: "%Y-%m-%d" }}</span
-          >
-        </div>
-        <h3>
-          <a href="{{ featured_post.url | relative_url }}"
-            >{{ featured_post.title }}</a
-          >
-        </h3>
-        <p class="post-excerpt">
-          {{ featured_post.excerpt | strip_html | truncate: 120 }}
-        </p>
-        {% if featured_post.tags.size > 0 %}
-        <div class="post-tags-list">
-          {% for tag in featured_post.tags %}
-          <span class="tag-pill">{{ tag }}</span>
-          {% endfor %}
-        </div>
-        {% endif %}
-        <a href="{{ featured_post.url | relative_url }}" class="read-more"
-          >阅读全文 →</a
-        >
-      </div>
-    </article>
-    {% else %}
-    <article class="post-card">
-      <p>暂无文章，敬请期待。</p>
-    </article>
-    {% endif %} {% for post in site.posts offset:1 limit:3 %} {% if post.cover
-    %}
-    <!-- Post with cover image -->
-    <article class="post-card featured">
-      <div class="featured-image">
-        <img src="{{ post.cover | relative_url }}" alt="{{ post.title }}" />
-      </div>
-      <div class="featured-content">
-        <div class="post-meta-tags">
-          {% if post.categories.size > 0 %}
-          <span class="category-tag">{{ post.categories | first }}</span>
-          {% endif %}
-          <span class="date-meta">{{ post.date | date: "%Y-%m-%d" }}</span>
-        </div>
-        <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
-        <p class="post-excerpt">
-          {{ post.excerpt | strip_html | truncate: 120 }}
-        </p>
-        {% if post.tags.size > 0 %}
-        <div class="post-tags-list">
-          {% for tag in post.tags %}
-          <span class="tag-pill">{{ tag }}</span>
-          {% endfor %}
-        </div>
-        {% endif %}
-        <a href="{{ post.url | relative_url }}" class="read-more">阅读全文 →</a>
-      </div>
-    </article>
-    {% else %}
-    <!-- Post without cover image -->
-    <article class="post-card">
-      <div class="post-meta-tags">
-        {% if post.categories.size > 0 %}
-        <span class="category-tag">{{ post.categories | first }}</span>
-        {% endif %}
-        <span class="date-meta">{{ post.date | date: "%Y-%m-%d" }}</span>
-      </div>
-      <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
-      <p class="post-excerpt">
-        {{ post.excerpt | strip_html | truncate: 140 }}
-      </p>
-      <div class="post-footer">
-        {% if post.tags.size > 0 %}
-        <div class="post-tags-list">
-          {% for tag in post.tags %}
-          <span class="tag-pill">{{ tag }}</span>
-          {% endfor %}
-        </div>
-        {% endif %}
-        <a href="{{ post.url | relative_url }}" class="read-more">阅读全文 →</a>
-      </div>
-    </article>
-    {% endif %} {% endfor %}
 
-    <!-- Pagination -->
-    <div class="pagination">
-      <a class="page-item active" href="#">1</a>
-      <a class="page-item" href="{{ '/categories.html' | relative_url }}">>></a>
+      <!-- Card 3: Technology -->
+      <div class="domain-card">
+        <div class="domain-icon-wrapper icon-purple">
+          <span class="domain-icon">💻</span>
+        </div>
+        <h3>技术纵横</h3>
+        <p>分享前沿技术趋势、架构设计与工程实践，探讨技术如何赋能产品与业务发展。</p>
+        <a href="{{ '/categories.html#技术纵横' | relative_url }}" class="read-more">阅读更多 →</a>
+      </div>
+
+      <!-- Card 4: Growth -->
+      <div class="domain-card">
+        <div class="domain-icon-wrapper icon-yellow">
+          <span class="domain-icon">📈</span>
+        </div>
+        <h3>运营增长</h3>
+        <p>解析用户增长、数据驱动与运营策略，分享从1到100的产品规模化经验。</p>
+        <a href="{{ '/categories.html#运营增长' | relative_url }}" class="read-more">阅读更多 →</a>
+      </div>
+
+      <!-- Card 5: Thoughts -->
+      <div class="domain-card">
+        <div class="domain-icon-wrapper icon-red">
+          <span class="domain-icon">🧠</span>
+        </div>
+        <h3>漫谈与思考</h3>
+        <p>记录生活感悟、行业观察与跨界思考，探索技术与人文的交叉点。</p>
+        <a href="{{ '/categories.html#漫谈与思考' | relative_url }}" class="read-more">阅读更多 →</a>
+      </div>
     </div>
-  </main>
-
-  <!-- Right Sidebar -->
-  <aside class="sidebar-column">
-    <!-- Categories Widget -->
-    {% include sidebar-categories.html %}
-
-    <!-- Tag Cloud Widget -->
-    {% include sidebar-tags.html %}
-
-    <!-- Hot Articles Widget -->
-    <div class="sidebar-widget">
-      <h4>热门文章</h4>
-      {% if site.posts.size > 0 %}
-      <ul class="hot-posts-list">
-        {% for post in site.posts limit:5 %}
-        <li>
-          <span class="rank-num">{{ forloop.index }}</span>
-          <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-        </li>
-        {% endfor %}
-      </ul>
-      {% else %}
-      <p>暂无热门文章</p>
-      {% endif %}
-    </div>
-  </aside>
+  </div>
 </div>

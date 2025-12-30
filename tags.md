@@ -33,12 +33,8 @@ permalink: /tags.html
         </div>
       </div>
     </div>
-
     <!-- 右侧：侧边栏 -->
     <aside class="sidebar-column">
-      <!-- Categories Widget -->
-      {% include sidebar-categories.html %}
-
       <!-- Tag Cloud Widget -->
       {% include sidebar-tags.html %}
     </aside>
@@ -103,8 +99,22 @@ permalink: /tags.html
   }
 
       const html = filteredPosts.map(post => {
-          // 使用复用的渲染函数，强制不显示封面
-          return renderPostCard(post, { forceNoCover: true });
+          // 简化的文章列表渲染
+          const tagsHtml = post.tags && post.tags.length > 0
+              ? `<div class="simple-tags-list">
+                  ${post.tags.map(tag => `<span class="simple-tag-pill">${tag}</span>`).join('')}
+                 </div>`
+              : '';
+              
+          return `
+          <article class="simple-post-card">
+              <div class="simple-card-header">
+                  <h3 class="simple-post-title"><a href="${post.url}">${post.title}</a></h3>
+                  ${tagsHtml}
+              </div>
+              <p class="simple-post-excerpt">${post.excerpt}</p>
+          </article>
+          `;
       }).join('');
 
       container.innerHTML = html;

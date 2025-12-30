@@ -5,7 +5,28 @@ layout: default
 <!-- Post Layout -->
 <article class="post-layout">
   <div class="wrapper">
-    <div class="post-container">
+    <div class="post-layout-grid">
+      <!-- Table of Contents (Left Sidebar) -->
+      <aside class="post-toc">
+        <div class="toc-wrapper">
+          <h3 class="toc-title">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="8" y1="6" x2="21" y2="6"></line>
+              <line x1="8" y1="12" x2="21" y2="12"></line>
+              <line x1="8" y1="18" x2="21" y2="18"></line>
+              <line x1="3" y1="6" x2="3.01" y2="6"></line>
+              <line x1="3" y1="12" x2="3.01" y2="12"></line>
+              <line x1="3" y1="18" x2="3.01" y2="18"></line>
+            </svg>
+            目录
+          </h3>
+          <nav id="toc-nav" class="toc-nav">
+            <!-- 目录将通过JavaScript动态生成 -->
+          </nav>
+        </div>
+      </aside>
+
+      <div class="post-container">
       <!-- Post Header -->
       <header class="post-header">
         <!-- Post Title -->
@@ -103,8 +124,123 @@ layout: default
           {% if has_related %}{% break %}{% endif %}
         {% endfor %}
       </footer>
+      </div>
     </div>
   </div>
 </article>
 
 <link rel="stylesheet" href="{{ '/assets/css/post.css' | relative_url }}" />
+
+<!-- Table of Contents Script -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const tocNav = document.getElementById('toc-nav');
+  const postContent = document.querySelector('.post-content');
+  const tocWrapper = document.querySelector('.post-toc');
+  
+  if (!tocNav || !postContent) return;
+  
+  // 获取所有标题（h2, h3, h4）
+  const headings = postContent.querySelectorAll('h1, h2, h3, h4');
+  
+  if (headings.length === 0) {
+    // 如果没有标题，隐藏目录
+    tocWrapper.style.display = 'none';
+    return;
+  }
+  
+  // 为每个标题添加ID（如果没有的话）
+  headings.forEach((heading, index) => {
+    if (!heading.id) {
+      heading.id = `heading-${index}`;
+    }
+  });
+  
+  // 生成目录HTML
+  let tocHTML = '<ul class="toc-list">';
+  let currentLevel = 0;
+  
+  headings.forEach((heading, index) => {
+    const level = parseInt(heading.tagName.substring(1));
+    const text = heading.textContent;
+    const id = heading.id;
+    
+    // 处理层级
+    if (level > currentLevel) {
+      for (let i = currentLevel; i < level; i++) {
+        tocHTML += '<ul class="toc-list">';
+      }
+    } else if (level < currentLevel) {
+      for (let i = level; i < currentLevel; i++) {
+        tocHTML += '</ul>';
+      }
+    }
+    
+    tocHTML += `<li class="toc-item toc-level-${level}">
+                  <a href="#${id}" class="toc-link" data-target="${id}">${text}</a>
+                </li>`;
+    
+    currentLevel = level;
+  });
+  
+  // 关闭所有未闭合的ul标签
+  for (let i = 1; i < currentLevel; i++) {
+    tocHTML += '</ul>';
+  }
+  tocHTML += '</ul>';
+  
+  tocNav.innerHTML = tocHTML;
+  
+  // 平滑滚动
+  const tocLinks = tocNav.querySelectorAll('.toc-link');
+  tocLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      const targetId = this.getAttribute('data-target');
+      const targetElement = document.getElementById(targetId);
+      
+      if (targetElement) {
+        const offset = 80; // 顶部偏移量
+        const elementPosition = targetElement.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - offset;
+        
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+        
+        // 更新活动状态
+        tocLinks.forEach(l => l.classList.remove('active'));
+        this.classList.add('active');
+      }
+    });
+  });
+  
+  // 滚动时高亮当前章节
+  let isScrolling = false;
+  window.addEventListener('scroll', function() {
+    if (isScrolling) return;
+    
+    isScrolling = true;
+    setTimeout(function() {
+      let current = '';
+      
+      headings.forEach(heading => {
+        const sectionTop = heading.offsetTop - 100;
+        if (window.pageYOffset >= sectionTop) {
+          current = heading.id;
+        }
+      });
+      
+      tocLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('data-target') === current) {
+          link.classList.add('active');
+        }
+      });
+      
+      isScrolling = false;
+    }, 100);
+  });
+});
+</script>
