@@ -15,7 +15,7 @@ permalink: /about
         <h2>Hello, 我是 zyc</h2>
         <p class="profile-bio">全栈开发（偏前端） / 9年工作经验 </p>
         <p class="profile-desc">
-          喜欢追逐新技术，开拓视野。目前正深入钻研 <strong>AI 大模型</strong>、<strong>智能体 (Agents)</strong> 及 <strong>RAG</strong> 等前沿领域。
+          专注于企业级大模型应用落地，致力于通过AI技术驱动业务创新与流程变革，擅长将大模型能力与具体业务场景深度结合，为企业构建可持续、可迭代的智能解决方案，实现技术赋能与价值转化。
         </p>
       </div>
     </div>

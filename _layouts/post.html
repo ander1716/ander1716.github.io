@@ -243,4 +243,73 @@ document.addEventListener('DOMContentLoaded', function() {
     }, 100);
   });
 });
+
+// 图片点击放大功能
+function initImageZoom() {
+  const postContent = document.querySelector('.post-content');
+  if (!postContent) return;
+  
+  const images = postContent.querySelectorAll('img');
+  if (images.length === 0) return;
+  
+  // 创建模态框
+  const modal = document.createElement('div');
+  modal.className = 'image-modal';
+  modal.innerHTML = `
+    <div class="image-modal-content">
+      <span class="image-modal-close">&times;</span>
+      <img class="image-modal-img" src="" alt="">
+      <div class="image-modal-caption"></div>
+    </div>
+  `;
+  document.body.appendChild(modal);
+  
+  const modalImg = modal.querySelector('.image-modal-img');
+  const modalCaption = modal.querySelector('.image-modal-caption');
+  const closeBtn = modal.querySelector('.image-modal-close');
+  
+  // 点击图片打开模态框
+  images.forEach(img => {
+    img.style.cursor = 'zoom-in';
+    img.addEventListener('click', function() {
+      modal.style.display = 'flex';
+      modalImg.src = this.src;
+      modalImg.alt = this.alt;
+      
+      // 获取图片标题（如果有）
+      const caption = this.nextElementSibling;
+      if (caption && caption.tagName === 'EM' && caption.textContent.includes('图')) {
+        modalCaption.textContent = caption.textContent;
+      } else {
+        modalCaption.textContent = this.alt || '';
+      }
+      
+      document.body.style.overflow = 'hidden';
+    });
+  });
+  
+  // 关闭模态框
+  closeBtn.addEventListener('click', function() {
+    modal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+  });
+  
+  modal.addEventListener('click', function(e) {
+    if (e.target === modal) {
+      modal.style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+  });
+  
+  // ESC键关闭
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && modal.style.display === 'flex') {
+      modal.style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+  });
+}
+
+// 初始化图片放大功能
+document.addEventListener('DOMContentLoaded', initImageZoom);
 </script>
