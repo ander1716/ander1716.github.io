@@ -73,12 +73,16 @@
   margin: 0;
 }
 
+/* 嵌套列表增加缩进和左侧边框线 */
 .toc-list .toc-list {
   margin-top: 4px;
+  padding-left: 12px;
+  border-left: 1px solid var(--border-color);
+  margin-left: 12px;
 }
 
 .toc-item {
-  margin: 4px 0;
+  margin: 2px 0;
 }
 
 .toc-link {
@@ -86,34 +90,50 @@
   padding: 6px 12px;
   color: var(--text-gray);
   text-decoration: none;
-  border-radius: 6px;
+  border-radius: 4px;
   transition: all 0.2s;
-  line-height: 1.5;
+  line-height: 1.4;
   border-left: 3px solid transparent;
+  font-size: 0.9rem;
+  margin-left: 4px; /* 与左侧边框线保持距离 */
 }
 
+/* 悬停效果 */
 .toc-link:hover {
-  background: rgba(47, 191, 160, 0.1);
+  background: rgba(47, 191, 160, 0.08);
   color: var(--primary-color);
   border-left-color: var(--primary-color);
-  transform: translateX(2px);
 }
 
+/* 激活状态 */
 .toc-link.active {
-  background: rgba(47, 191, 160, 0.15);
+  background: rgba(47, 191, 160, 0.12);
   color: var(--primary-color);
   font-weight: 600;
   border-left-color: var(--primary-color);
 }
 
-.toc-level-1 .toc-link {
-  font-weight: 600;
+/* 各级标题样式微调 */
+.toc-level-1 > .toc-link {
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--text-dark);
 }
 
-.toc-level-3 .toc-link,
-.toc-level-4 .toc-link {
-  font-size: 0.85em;
-  padding: 4px 10px;
+.toc-level-2 > .toc-link {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--text-dark);
+}
+
+.toc-level-3 > .toc-link {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.toc-level-4 > .toc-link {
+  font-size: 0.85rem;
+  color: #888;
 }
 
 /* 滚动条美化 */

@@ -156,12 +156,24 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
   
+  // 计算最小标题层级，实现相对缩进
+  let minLevel = 6;
+  headings.forEach(heading => {
+    const level = parseInt(heading.tagName.substring(1));
+    if (level < minLevel) {
+      minLevel = level;
+    }
+  });
+  
   // 生成目录HTML
-  let tocHTML = '<ul class="toc-list">';
-  let currentLevel = 0;
+  let tocHTML = '';
+  let currentLevel = 0; // 当前逻辑层级
   
   headings.forEach((heading, index) => {
-    const level = parseInt(heading.tagName.substring(1));
+    // 计算相对层级：例如 minLevel=3(h3)，则 h3->1, h4->2
+    const realLevel = parseInt(heading.tagName.substring(1));
+    const level = realLevel - minLevel + 1; 
+    
     const text = heading.textContent;
     const id = heading.id;
     
@@ -176,7 +188,8 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     }
     
-    tocHTML += `<li class="toc-item toc-level-${level}">
+    // 使用 realLevel 保留原始标签层级信息用于样式（如字体大小）
+    tocHTML += `<li class="toc-item toc-level-${realLevel}">
                   <a href="#${id}" class="toc-link" data-target="${id}">${text}</a>
                 </li>`;
     
@@ -184,10 +197,9 @@ document.addEventListener('DOMContentLoaded', function() {
   });
   
   // 关闭所有未闭合的ul标签
-  for (let i = 1; i < currentLevel; i++) {
+  for (let i = 0; i < currentLevel; i++) {
     tocHTML += '</ul>';
   }
-  tocHTML += '</ul>';
   
   tocNav.innerHTML = tocHTML;
   
