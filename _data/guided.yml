@@ -9,11 +9,25 @@ links:
     url: https://chat.deepseek.com/
   - name: 豆包
     url: https://www.doubao.com/chat
+  - name:  kimi
+    url: https://www.kimi.com/
+  - name: 千问
+    url: https://www.qianwen.com/
+  - name: 谷歌 Gemini
+    url: https://gemini.google.com/app
+  - name: Grok
+    url: https://grok.com/
 - name: LLM开放平台集合
   items:
   - name: OpenAI API
     url: https://platform.openai.com/docs/overview
   - name: 阿里云百炼
     url: https://bailian.console.aliyun.com
+  - name: 小A Plus
+    url: https://xiaoai.plus/
   - name: DeepSeek 开放平台
     url: https://platform.deepseek.com/
+- name: 垂类大模型应用
+  items:
+  - name: 妙想（金融投资）
+    url: https://ai.eastmoney.com/chat

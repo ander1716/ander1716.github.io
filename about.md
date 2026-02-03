@@ -9,13 +9,19 @@ permalink: /about
   <section class="about-section profile-section">
     <div class="profile-header">
       <div class="profile-avatar">
-        <span>👨‍💻</span>
+        <span>🤖</span>
       </div>
       <div class="profile-info">
-        <h2>Hello, 我是 zyc</h2>
-        <p class="profile-bio">全栈开发（偏前端） / 9年工作经验 </p>
+        <h2>你好，我是 zyc</h2>
+        <p class="profile-bio">LLM 应用工程 / 软件工程背景</p>
         <p class="profile-desc">
-          专注于企业级大模型应用落地，致力于通过AI技术驱动业务创新与流程变革，擅长将大模型能力与具体业务场景深度结合，为企业构建可持续、可迭代的智能解决方案，实现技术赋能与价值转化。
+          具备扎实的软件工程背景，专注于大模型（LLM）应用工程化落地，关注 Agent、RAG、企业级 AI 系统设计与性能优化。
+        </p>
+        <p class="profile-desc">
+          熟悉从需求分析、系统架构设计到开发部署的完整流程，能够将大模型能力稳定地集成到传统业务系统中。
+        </p>
+        <p class="profile-desc">
+          对 LLM、Agent、RAG 等方向有强烈兴趣和自驱力，注重工程质量、可扩展性与真实业务价值。
         </p>
       </div>
     </div>
@@ -25,48 +31,47 @@ permalink: /about
     <!-- 左侧：技能栈 -->
     <div class="about-col-main">
       <section class="about-section">
-        <h3>🛠️ 技术栈</h3>
-        
+        <h3>🧠 核心技能</h3>
+
         <div class="skill-group">
-          <div class="skill-label">前端开发</div>
+          <div class="skill-label">大模型 / AI 应用</div>
           <div class="skill-tags">
-            <span class="skill-tag vue">Vue</span>
-            <span class="skill-tag react">React</span>
+            <span class="skill-tag llm">LLM 应用开发流程</span>
+            <span class="skill-tag llm">OpenAI / LLaMA 集成</span>
+            <span class="skill-tag llm">RAG 技术栈</span>
+            <span class="skill-tag llm">向量检索设计与调优</span>
+            <span class="skill-tag llm">Agent / Workflow</span>
+            <span class="skill-tag llm">多步骤任务拆解</span>
+            <span class="skill-tag llm">Prompt Engineering</span>
+            <span class="skill-tag llm">模型评估与迭代</span>
           </div>
         </div>
 
         <div class="skill-group">
-          <div class="skill-label">后端开发</div>
+          <div class="skill-label">工程与后端</div>
           <div class="skill-tags">
-            <span class="skill-tag node">Node.js</span>
-            <span class="skill-tag nest">NestJS</span>
-            <span class="skill-tag python">Python</span>
-            <span class="skill-tag fast">FastAPI</span>
+            <span class="skill-tag backend">Python 后端开发</span>
+            <span class="skill-tag backend">可维护代码结构</span>
+            <span class="skill-tag backend">FastAPI API 服务</span>
+            <span class="skill-tag backend">PostgreSQL</span>
+            <span class="skill-tag backend">MySQL</span>
+            <span class="skill-tag backend">Redis 缓存</span>
+            <span class="skill-tag backend">Git 版本管理</span>
+            <span class="skill-tag backend">Docker 容器化</span>
           </div>
         </div>
 
         <div class="skill-group">
-          <div class="skill-label">AI & 大模型</div>
+          <div class="skill-label">基础设施</div>
           <div class="skill-tags">
-            <span class="skill-tag ai">RAG</span>
-            <span class="skill-tag ai">LangChain</span>
-            <span class="skill-tag ai">AI Agents</span>
-          </div>
-        </div>
-
-        <div class="skill-group">
-          <div class="skill-label">数据库</div>
-          <div class="skill-tags">
-            <span class="skill-tag db">MySQL</span>
-            <span class="skill-tag db">Chroma</span>
-          </div>
-        </div>
-
-        <div class="skill-group">
-          <div class="skill-label">DevOps</div>
-          <div class="skill-tags">
-            <span class="skill-tag ops">Linux</span>
-            <span class="skill-tag ops">Docker</span>
+            <span class="skill-tag infra">向量数据库 Qdrant</span>
+            <span class="skill-tag infra">Milvus</span>
+            <span class="skill-tag infra">FAISS</span>
+            <span class="skill-tag infra">分布式系统概念</span>
+            <span class="skill-tag infra">性能优化思路</span>
+            <span class="skill-tag infra">模型部署</span>
+            <span class="skill-tag infra">vLLM 推理加速</span>
+            <span class="skill-tag infra">ONNX Runtime</span>
           </div>
         </div>
       </section>
@@ -120,6 +125,7 @@ permalink: /about
     padding: 30px;
     margin-bottom: 25px;
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+    border: 1px solid #eef0f3;
   }
 
   .about-section h3 {
@@ -140,7 +146,7 @@ permalink: /about
   .profile-avatar {
     width: 100px;
     height: 100px;
-    background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+    background: linear-gradient(135deg, #dbeafe 0%, #f5d0fe 100%);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -157,12 +163,17 @@ permalink: /about
   .profile-bio {
     color: var(--text-gray);
     font-weight: 500;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
   }
 
   .profile-desc {
     line-height: 1.6;
     color: var(--text-dark);
+    margin: 0;
+  }
+
+  .profile-desc + .profile-desc {
+    margin-top: 10px;
   }
 
   /* Grid Layout */
@@ -187,31 +198,26 @@ permalink: /about
   .skill-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 8px;
   }
 
   .skill-tag {
-    padding: 6px 14px;
-    border-radius: 6px;
-    font-size: 0.9rem;
-    background: #f5f7fa;
-    color: var(--text-gray);
-    border: 1px solid transparent;
-    transition: all 0.2s;
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    background: #ffffff;
+    color: var(--text-dark);
+    border: 1px solid #e5e7eb;
+    transition: all 0.2s ease;
   }
 
   .skill-tag:hover {
     transform: translateY(-2px);
   }
 
-  .skill-tag.vue { background: #eafff5; color: #42b883; border-color: #42b883; }
-  .skill-tag.react { background: #f0fdff; color: #61dafb; border-color: #61dafb; }
-  .skill-tag.node { background: #f0fff4; color: #68a063; border-color: #68a063; }
-  .skill-tag.nest { background: #fff5f5; color: #e0234e; border-color: #e0234e; }
-  .skill-tag.python { background: #f7f9ff; color: #306998; border-color: #306998; }
-  .skill-tag.ai { background: #fbf5ff; color: #9d4edd; border-color: #9d4edd; }
-  .skill-tag.db { background: #fffbe6; color: #faad14; border-color: #faad14; }
-  .skill-tag.ops { background: #e6f7ff; color: #1890ff; border-color: #1890ff; }
+  .skill-tag.llm { background: #eef2ff; color: #4338ca; border-color: #c7d2fe; }
+  .skill-tag.backend { background: #ecfeff; color: #0e7490; border-color: #a5f3fc; }
+  .skill-tag.infra { background: #fdf2f8; color: #be185d; border-color: #fbcfe8; }
 
   /* Timeline */
   .timeline {

@@ -722,6 +722,8 @@ ul {
   color: #dfe6e9;
   padding: 60px 0 30px;
   margin-top: auto;
+  position: relative;
+  z-index: 12;
 }
 
 .footer-grid {

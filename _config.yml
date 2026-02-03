@@ -64,3 +64,12 @@ exclude:
   - vendor/cache/
   - vendor/gems/
   - vendor/ruby/
+
+# 代码语法高亮
+markdown: kramdown
+kramdown:
+#   syntax_highlighter: none  # 指定用rouge做语法高亮
+  syntax_highlighter: rouge  # 指定用rouge做语法高亮
+  syntax_highlighter_opts:
+    block:
+      line_numbers: false  # 开启行号（可选，根据需要关闭）

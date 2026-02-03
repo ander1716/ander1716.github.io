@@ -136,23 +136,25 @@
   color: #888;
 }
 
-/* 滚动条美化 */
+.post-toc {
+  scrollbar-width: none;
+}
+
 .post-toc::-webkit-scrollbar {
-  width: 6px;
+  width: 0;
+  height: 0;
 }
 
 .post-toc::-webkit-scrollbar-track {
-  background: #f1f1f1;
-  border-radius: 3px;
+  background: transparent;
 }
 
 .post-toc::-webkit-scrollbar-thumb {
-  background: #ccc;
-  border-radius: 3px;
+  background: transparent;
 }
 
 .post-toc::-webkit-scrollbar-thumb:hover {
-  background: var(--primary-color);
+  background: transparent;
 }
 
 /* Post Header */
@@ -865,4 +867,3 @@
     font-size: 12px;
   }
 }
-
