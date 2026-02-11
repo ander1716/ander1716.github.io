@@ -4,10 +4,10 @@ title:  "Python中读取环境变量——dotenv"
 date:   2026-01-09
 last_modified_at: 2026-01-09
 categories: [代码片段]
-tags: [code]
+tags: [python]
 cover: https://qiniu.zhuyucun.cn/uploads/1764853276621_kn1jl7.jpg
 excerpt: >
-  介绍如何使用Python中的dotenv库来读取环境变量。
+  python中的环境变量管理（python-dotenv）。
 ---
 
 ## 功能和问题

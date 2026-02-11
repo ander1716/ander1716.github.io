@@ -13,7 +13,7 @@ categories: [代码片段]
 tags: [code]
 cover: https://qiniu.zhuyucun.cn/uploads/1764853276621_kn1jl7.jpg
 excerpt: >
-  介绍如何使用Python中的dotenv库来读取环境变量。
+  一句话简单介绍文章内容。
 ---
 
 ## 功能和问题
