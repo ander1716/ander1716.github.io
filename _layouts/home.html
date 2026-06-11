@@ -2,67 +2,154 @@
 layout: default
 ---
 
-<!-- Hero Section -->
-<section class="hero-section">
-  <div class="wrapper">
-    <h1>从代码到价值：技术、产品、商业到生活</h1>
-    <p>每一次编译都是对世界的提问，每一个产品都是答案，而商业回报则定义了答案的份量</p>
+{% assign latest_post = site.posts | first %}
+{% assign product_posts = site.posts | where_exp: "post", "post.categories contains '产品思维'" %}
+{% assign design_posts = site.posts | where_exp: "post", "post.categories contains '设计与体验'" %}
+{% assign tech_posts = site.posts | where_exp: "post", "post.categories contains '技术纵横'" %}
+{% assign growth_posts = site.posts | where_exp: "post", "post.categories contains '运营增长'" %}
+{% assign thought_posts = site.posts | where_exp: "post", "post.categories contains '漫谈与思考'" %}
+
+<section class="home-hero">
+  <div class="wrapper home-hero-inner">
+    <div class="home-hero-copy">
+      <p class="hero-kicker">Personal notes on AI, product and code</p>
+      <h1>从代码到价值：技术、产品、商业到生活</h1>
+      <p class="hero-summary">
+        记录 AI 和工程实践里的真实问题，也整理产品、商业与日常思考。这里更像一间持续更新的工作台。
+      </p>
+      <div class="hero-actions">
+        <a class="hero-primary-link" href="{{ '/categories.html' | relative_url }}">浏览全部文章</a>
+        <a class="hero-secondary-link" href="{{ '/guide' | relative_url }}">打开网站导航</a>
+      </div>
+      <div class="hero-stats" aria-label="站点概览">
+        <span><strong>{{ site.posts | size }}</strong> 篇文章</span>
+        <span><strong>{{ site.tags | size }}</strong> 个标签</span>
+        <span><strong>{{ site.categories | size }}</strong> 个分类</span>
+      </div>
+    </div>
+
+    {% if latest_post %}
+    <a class="home-featured-post" href="{{ latest_post.url | relative_url }}">
+      <span class="featured-label">最新文章</span>
+      <h2>{{ latest_post.title }}</h2>
+      <p>{{ latest_post.excerpt | strip_html | truncate: 96 }}</p>
+      <div class="featured-meta">
+        {% if latest_post.categories.size > 0 %}
+        <span>{{ latest_post.categories | first }}</span>
+        {% endif %}
+        <time datetime="{{ latest_post.date | date: '%Y-%m-%d' }}">{{ latest_post.date | date: "%Y-%m-%d" }}</time>
+      </div>
+    </a>
+    {% endif %}
   </div>
 </section>
 
-<!-- Main Layout replaced with Thinking Domains -->
-<div class="wrapper thinking-domains-wrapper">
-  <div class="thinking-domains-section">
-    <div class="domains-grid">
-      <!-- Card 1: Product Thinking -->
-      <div class="domain-card">
-        <div class="domain-icon-wrapper icon-blue">
-          <span class="domain-icon">💡</span>
-        </div>
+<main class="home-main">
+  <section class="wrapper home-section">
+    <div class="home-section-header">
+      <div>
+        <p class="section-eyebrow">Thinking Domains</p>
+        <h2>按主题进入</h2>
+      </div>
+      <a href="{{ '/categories.html' | relative_url }}">全部分类</a>
+    </div>
+
+    <div class="home-domain-grid">
+      <a class="home-domain-card" href="{{ '/categories.html#产品思维' | relative_url }}">
+        <span class="domain-mark icon-blue">01</span>
         <h3>产品思维</h3>
-        <p>深入探讨产品方法论、用户需求分析与商业价值创造，分享从0到1打造产品的思考过程。</p>
-        <a href="{{ '/categories.html#产品思维' | relative_url }}" class="read-more">阅读更多 →</a>
-      </div>
+        <p>产品方法、需求分析、商业价值和从 0 到 1 的思考。</p>
+        <span class="domain-count">{{ product_posts | size }} 篇</span>
+      </a>
 
-      <!-- Card 2: Design & Experience -->
-      <div class="domain-card">
-        <div class="domain-icon-wrapper icon-green">
-          <span class="domain-icon">🖋️</span>
-        </div>
+      <a class="home-domain-card" href="{{ '/categories.html#设计与体验' | relative_url }}">
+        <span class="domain-mark icon-green">02</span>
         <h3>设计与体验</h3>
-        <p>探索交互设计、视觉美学与用户体验的奥秘，分享提升产品体验的实用技巧与案例。</p>
-        <a href="{{ '/categories.html#设计与体验' | relative_url }}" class="read-more">阅读更多 →</a>
-      </div>
+        <p>交互设计、视觉体验和更顺手的产品表达。</p>
+        <span class="domain-count">{{ design_posts | size }} 篇</span>
+      </a>
 
-      <!-- Card 3: Technology -->
-      <div class="domain-card">
-        <div class="domain-icon-wrapper icon-purple">
-          <span class="domain-icon">💻</span>
-        </div>
+      <a class="home-domain-card" href="{{ '/categories.html#技术纵横' | relative_url }}">
+        <span class="domain-mark icon-purple">03</span>
         <h3>技术纵横</h3>
-        <p>分享前沿技术趋势、架构设计与工程实践，探讨技术如何赋能产品与业务发展。</p>
-        <a href="{{ '/categories.html#技术纵横' | relative_url }}" class="read-more">阅读更多 →</a>
-      </div>
+        <p>AI、后端、架构、工程实践和技术专题笔记。</p>
+        <span class="domain-count">{{ tech_posts | size }} 篇</span>
+      </a>
 
-      <!-- Card 4: Growth -->
-      <div class="domain-card">
-        <div class="domain-icon-wrapper icon-yellow">
-          <span class="domain-icon">📈</span>
-        </div>
+      <a class="home-domain-card" href="{{ '/categories.html#运营增长' | relative_url }}">
+        <span class="domain-mark icon-yellow">04</span>
         <h3>运营增长</h3>
-        <p>解析用户增长、数据驱动与运营策略，分享从1到100的产品规模化经验。</p>
-        <a href="{{ '/categories.html#运营增长' | relative_url }}" class="read-more">阅读更多 →</a>
+        <p>用户增长、数据驱动、运营策略和规模化经验。</p>
+        <span class="domain-count">{{ growth_posts | size }} 篇</span>
+      </a>
+
+      <a class="home-domain-card" href="{{ '/categories.html#漫谈与思考' | relative_url }}">
+        <span class="domain-mark icon-red">05</span>
+        <h3>漫谈与思考</h3>
+        <p>行业观察、个人成长和技术之外的长期问题。</p>
+        <span class="domain-count">{{ thought_posts | size }} 篇</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="wrapper home-section home-content-layout">
+    <div class="home-posts-column">
+      <div class="home-section-header">
+        <div>
+          <p class="section-eyebrow">Recent Notes</p>
+          <h2>最近更新</h2>
+        </div>
+        <a href="{{ '/categories.html' | relative_url }}">更多文章</a>
       </div>
 
-      <!-- Card 5: Thoughts -->
-      <div class="domain-card">
-        <div class="domain-icon-wrapper icon-red">
-          <span class="domain-icon">🧠</span>
-        </div>
-        <h3>漫谈与思考</h3>
-        <p>记录生活感悟、行业观察与跨界思考，探索技术与人文的交叉点。</p>
-        <a href="{{ '/categories.html#漫谈与思考' | relative_url }}" class="read-more">阅读更多 →</a>
+      <div class="home-post-list">
+        {% for post in site.posts limit: 6 %}
+        <article class="home-post-card">
+          <div class="home-post-content">
+            <div class="home-post-meta">
+              {% if post.categories.size > 0 %}
+              <a href="{{ '/categories.html#' | append: post.categories.first | relative_url }}">{{ post.categories | first }}</a>
+              {% endif %}
+              <time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date: "%Y-%m-%d" }}</time>
+            </div>
+            <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+            <p>{{ post.excerpt | strip_html | truncate: 120 }}</p>
+            {% if post.tags.size > 0 %}
+            <div class="home-post-tags">
+              {% for tag in post.tags limit: 3 %}
+              <a href="{{ '/tags.html#' | append: tag | relative_url }}">#{{ tag }}</a>
+              {% endfor %}
+            </div>
+            {% endif %}
+          </div>
+          {% if post.cover %}
+          <a class="home-post-cover" href="{{ post.url | relative_url }}" aria-label="{{ post.title }}">
+            <img src="{{ post.cover }}" alt="{{ post.title }}" loading="lazy">
+          </a>
+          {% endif %}
+        </article>
+        {% endfor %}
       </div>
     </div>
-  </div>
-</div>
+
+    <aside class="home-side-column">
+      <div class="home-side-panel">
+        <h3>常用入口</h3>
+        <a href="{{ '/tags.html' | relative_url }}">按标签查找</a>
+        <a href="{{ '/categories.html#技术纵横' | relative_url }}">技术纵横</a>
+        <a href="{{ '/categories.html#漫谈与思考' | relative_url }}">漫谈与思考</a>
+        <a href="{{ '/about.html' | relative_url }}">关于我</a>
+      </div>
+
+      <div class="home-side-panel">
+        <h3>高频标签</h3>
+        <div class="home-tag-cloud">
+          {% assign sorted_tags = site.tags | sort %}
+          {% for tag in sorted_tags limit: 16 %}
+          <a href="{{ '/tags.html#' | append: tag[0] | relative_url }}">{{ tag[0] }}</a>
+          {% endfor %}
+        </div>
+      </div>
+    </aside>
+  </section>
+</main>

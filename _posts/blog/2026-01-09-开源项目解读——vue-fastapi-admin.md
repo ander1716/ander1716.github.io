@@ -75,6 +75,10 @@ if __name__ == '__main__':
     uvicorn.run(app='main:app', host="127.0.0.1", port=9100, reload=True)
 ```
 而 create_app 函数中是一些列初始化和注册的过程，包括异常处理、路由注册、中间件注册、跨域注册等。
+使用uvicorn启动：
+``` bash
+uvicorn main:app --host 127.0.0.1 --port 8800 --reload
+```
 
 - 异常处理
 

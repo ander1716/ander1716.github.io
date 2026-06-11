@@ -3,34 +3,41 @@ layout: null
 title: 网站导航
 ---
 
+{% assign total_items = 0 %}
+{% for category in site.data.guided.links %}
+  {% assign total_items = total_items | plus: category.items.size %}
+{% endfor %}
+
 <!DOCTYPE html>
 <html lang="zh-CN">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{{ page.title }} | z-blog</title>
-    <link
-      rel="stylesheet"
-      href="{{ '/assets/css/guided.css' | relative_url }}"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      href="{{ '/assets/icons/codeing.png' | relative_url }}"
-    />
+    <link rel="stylesheet" href="{{ '/assets/css/guided.css' | relative_url }}" />
+    <link rel="icon" type="image/png" href="{{ '/assets/icons/codeing.png' | relative_url }}" />
   </head>
   <body>
-    <div class="geek-container">
-      <!-- Sidebar -->
-      <aside class="geek-sidebar">
-        <div class="sidebar-header">
-          <h1>
-            <a href="/">{{ site.data.guided.title }}</a>
-          </h1>
+    <div class="guide-shell">
+      <aside class="guide-sidebar">
+        <div class="sidebar-brand">
+          <a class="brand-home" href="{{ '/' | relative_url }}">z-blog</a>
+          <h1>{{ site.data.guided.title }}</h1>
           <p>{{ site.data.guided.description }}</p>
         </div>
 
-        <div class="sidebar-nav-wrapper">
+        <div class="sidebar-stats" aria-label="导航统计">
+          <div>
+            <strong>{{ site.data.guided.links | size }}</strong>
+            <span>分类</span>
+          </div>
+          <div>
+            <strong>{{ total_items }}</strong>
+            <span>站点</span>
+          </div>
+        </div>
+
+        <nav class="sidebar-nav" aria-label="导航分类">
           <ul class="nav-menu" id="navMenu">
             {% for category in site.data.guided.links %}
             <li class="nav-item">
@@ -39,41 +46,85 @@ title: 网站导航
                 class="nav-link"
                 data-target="category-{{ forloop.index }}"
               >
-                {{ category.name }}
+                <span class="nav-index">{{ forloop.index }}</span>
+                <span>{{ category.name }}</span>
+                <small>{{ category.items | size }}</small>
               </a>
             </li>
             {% endfor %}
           </ul>
-        </div>
+        </nav>
+
+        <a class="back-blog" href="{{ '/' | relative_url }}">返回博客首页</a>
       </aside>
 
-      <!-- Main Content -->
-      <main class="geek-content" id="mainContent">
+      <main class="guide-content" id="mainContent">
+        <section class="guide-hero">
+          <div>
+            <p class="hero-kicker">AI Tools Directory</p>
+            <h2>把常用 AI 工具放在一个顺手的位置</h2>
+            <p>
+              聚合对话应用、开放平台和垂类工具。快速筛选、按分类浏览，少一点翻找，多一点进入状态。
+            </p>
+          </div>
+          <div class="hero-panel">
+            <span>已收录</span>
+            <strong>{{ total_items }}</strong>
+            <small>个常用站点</small>
+          </div>
+        </section>
+
+        <div class="guide-toolbar">
+          <label class="guide-search" for="guideSearch">
+            <span aria-hidden="true"></span>
+            <input id="guideSearch" type="search" placeholder="搜索工具名称或分类" autocomplete="off" />
+          </label>
+          <a class="toolbar-link" href="{{ '/' | relative_url }}">博客首页</a>
+        </div>
+
+        <div id="emptyState" class="empty-state" hidden>
+          没有找到匹配的站点，换个关键词试试。
+        </div>
+
         {% for category in site.data.guided.links %}
-        <section id="category-{{ forloop.index }}" class="category-section">
-          <h2 class="category-title">{{ category.name }}</h2>
+        <section
+          id="category-{{ forloop.index }}"
+          class="category-section"
+          data-category="{{ category.name | escape }}"
+        >
+          <div class="category-heading">
+            <div>
+              <p>Category {{ forloop.index }}</p>
+              <h2>{{ category.name }}</h2>
+            </div>
+            <span>{{ category.items | size }} 个站点</span>
+          </div>
+
           <div class="items-grid">
             {% for item in category.items %}
+            {% assign fallback_icon = '/assets/icons/codeing.png' | relative_url %}
             <a
               href="{{ item.url }}"
               target="_blank"
               rel="noopener noreferrer"
               class="item-card"
               title="{{ item.name }}"
+              data-name="{{ item.name | escape }}"
+              data-category="{{ category.name | escape }}"
             >
-              <div class="item-icon">
-                <!-- Use external favicon service or fallback to local icon -->
-                {% assign fallback_icon = '/assets/icons/codeing.png' |
-                relative_url %}
+              <span class="item-icon">
                 <img
                   src="https://www.google.com/s2/favicons?domain={{ item.url }}&sz=64"
                   onerror="this.onerror=null;this.src='{{ fallback_icon }}';"
-                  alt="{{ item.name }}"
+                  alt=""
+                  loading="lazy"
                 />
-              </div>
-              <div class="item-info">
-                <div class="item-name">{{ item.name }}</div>
-              </div>
+              </span>
+              <span class="item-info">
+                <span class="item-name">{{ item.name }}</span>
+                <span class="item-domain">{{ item.url | remove: 'https://' | remove: 'http://' | split: '/' | first }}</span>
+              </span>
+              <span class="item-arrow" aria-hidden="true"></span>
             </a>
             {% endfor %}
           </div>
@@ -87,67 +138,76 @@ title: 网站导航
         const navLinks = document.querySelectorAll(".nav-link");
         const mainContent = document.getElementById("mainContent");
         const sections = document.querySelectorAll(".category-section");
+        const searchInput = document.getElementById("guideSearch");
+        const cards = document.querySelectorAll(".item-card");
+        const emptyState = document.getElementById("emptyState");
 
-        // Smooth scroll to section on click
         navLinks.forEach((link) => {
-          link.addEventListener("click", function (e) {
-            e.preventDefault();
+          link.addEventListener("click", function (event) {
+            event.preventDefault();
             const targetId = this.getAttribute("data-target");
             const targetSection = document.getElementById(targetId);
 
             if (targetSection) {
-              // Remove active class from all links
-              navLinks.forEach((l) => l.classList.remove("active"));
-              // Add active class to clicked link
+              navLinks.forEach((item) => item.classList.remove("active"));
               this.classList.add("active");
-
-              // Scroll to section
-              targetSection.scrollIntoView({
-                behavior: "smooth",
-                block: "start",
-              });
+              targetSection.scrollIntoView({ behavior: "smooth", block: "start" });
             }
           });
         });
 
-        // Highlight active menu item on scroll
-        // Using Intersection Observer for better performance
-        const observerOptions = {
-          root: mainContent,
-          threshold: 0.2, // Trigger when 20% of the section is visible
-          rootMargin: "-10% 0px -70% 0px", // Adjust active area
-        };
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) return;
 
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
               const id = entry.target.getAttribute("id");
-
-              // Remove active class from all links
               navLinks.forEach((link) => link.classList.remove("active"));
+              const activeLink = document.querySelector(`.nav-link[data-target="${id}"]`);
 
-              // Add active class to corresponding link
-              const activeLink = document.querySelector(
-                `.nav-link[data-target="${id}"]`
-              );
               if (activeLink) {
                 activeLink.classList.add("active");
-
-                // Scroll sidebar to keep active link in view if needed
-                activeLink.scrollIntoView({
-                  behavior: "smooth",
-                  block: "nearest",
-                });
+                activeLink.scrollIntoView({ behavior: "smooth", block: "nearest" });
               }
-            }
+            });
+          },
+          {
+            root: mainContent,
+            threshold: 0.22,
+            rootMargin: "-12% 0px -65% 0px",
+          }
+        );
+
+        sections.forEach((section) => observer.observe(section));
+
+        function applyFilter() {
+          const query = searchInput.value.trim().toLowerCase();
+          let visibleCards = 0;
+
+          sections.forEach((section) => {
+            let sectionVisibleCards = 0;
+
+            section.querySelectorAll(".item-card").forEach((card) => {
+              const text = `${card.dataset.name} ${card.dataset.category}`.toLowerCase();
+              const isVisible = !query || text.includes(query);
+              card.hidden = !isVisible;
+
+              if (isVisible) {
+                visibleCards += 1;
+                sectionVisibleCards += 1;
+              }
+            });
+
+            section.hidden = sectionVisibleCards === 0;
           });
-        }, observerOptions);
 
-        sections.forEach((section) => {
-          observer.observe(section);
-        });
+          emptyState.hidden = visibleCards > 0;
+        }
 
-        // Activate first item initially
+        if (searchInput) {
+          searchInput.addEventListener("input", applyFilter);
+        }
+
         if (navLinks.length > 0) {
           navLinks[0].classList.add("active");
         }
